@@ -1,0 +1,12 @@
+{
+  "html": "sheet.html",
+  "css": "sheet.css",
+  "authors": [
+    "Arkham Horror Roll20 Sheet Team"
+  ],
+  "roll20userid": "",
+  "preview": [
+    "assets/preview.png"
+  ],
+  "instructions": "docs/README.md"
+}

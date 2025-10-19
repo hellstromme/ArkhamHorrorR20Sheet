@@ -1,0 +1,358 @@
+<!--
+  Arkham Horror Roll20 Character Sheet
+  Structural scaffold establishing attribute names and primary sections.
+-->
+<div class="sheet-wrapper">
+  <header class="sheet-header">
+    <h1>Arkham Horror Character Sheet</h1>
+    <div class="sheet-field-grid">
+      <label>
+        <span>Character Name</span>
+        <input type="text" name="attr_character_name" />
+      </label>
+      <label>
+        <span>Character Archetype</span>
+        <input type="text" name="attr_character_archetype" />
+      </label>
+      <label>
+        <span>Player Name</span>
+        <input type="text" name="attr_player_name" />
+      </label>
+      <label>
+        <span>Total XP Earned</span>
+        <input type="number" name="attr_total_xp" min="0" />
+      </label>
+      <label>
+        <span>Unused XP</span>
+        <input type="number" name="attr_unspent_xp" min="0" />
+      </label>
+      <label>
+        <span>Positive Personality Trait</span>
+        <input type="text" name="attr_personality_trait_positive" />
+      </label>
+      <label>
+        <span>Negative Personality Trait</span>
+        <input type="text" name="attr_personality_trait_negative" />
+      </label>
+    </div>
+  </header>
+
+  <section class="sheet-section sheet-resources">
+    <h2>Dice Pool &amp; Insight</h2>
+    <div class="sheet-field-grid">
+      <label>
+        <span>Dice Pool (Current)</span>
+        <input type="number" name="attr_dice_pool_current" min="0" />
+      </label>
+      <label>
+        <span>Dice Pool Limit</span>
+        <input type="number" name="attr_dice_pool_limit" min="0" />
+      </label>
+      <label>
+        <span>Dice Pool Maximum</span>
+        <input type="number" name="attr_dice_pool_max" min="0" />
+      </label>
+      <label>
+        <span>Horror Dice Limit</span>
+        <input type="number" name="attr_horror_dice_limit" min="0" />
+      </label>
+      <label>
+        <span>Insight (Current)</span>
+        <input type="number" name="attr_insight_current" min="0" />
+      </label>
+      <label>
+        <span>Insight Limit</span>
+        <input type="number" name="attr_insight_limit" min="0" />
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section sheet-skills">
+    <h2>Skills</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Skill</th>
+          <th>Level</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Agility</th>
+          <td>
+            <select name="attr_skill_agility">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_agility_notes" /></td>
+        </tr>
+        <tr>
+          <th>Athletics</th>
+          <td>
+            <select name="attr_skill_athletics">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_athletics_notes" /></td>
+        </tr>
+        <tr>
+          <th>Wits</th>
+          <td>
+            <select name="attr_skill_wits">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_wits_notes" /></td>
+        </tr>
+        <tr>
+          <th>Presence</th>
+          <td>
+            <select name="attr_skill_presence">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_presence_notes" /></td>
+        </tr>
+        <tr>
+          <th>Intuition</th>
+          <td>
+            <select name="attr_skill_intuition">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_intuition_notes" /></td>
+        </tr>
+        <tr>
+          <th>Knowledge</th>
+          <td>
+            <select name="attr_skill_knowledge">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_knowledge_notes" /></td>
+        </tr>
+        <tr>
+          <th>Resolve</th>
+          <td>
+            <select name="attr_skill_resolve">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_resolve_notes" /></td>
+        </tr>
+        <tr>
+          <th>Melee Combat</th>
+          <td>
+            <select name="attr_skill_melee_combat">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_melee_combat_notes" /></td>
+        </tr>
+        <tr>
+          <th>Ranged Combat</th>
+          <td>
+            <select name="attr_skill_ranged_combat">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_ranged_combat_notes" /></td>
+        </tr>
+        <tr>
+          <th>Lore</th>
+          <td>
+            <select name="attr_skill_lore">
+              <option value="6">Bad (6+)</option>
+              <option value="5">Normal (5+)</option>
+              <option value="4">Good (4+)</option>
+              <option value="3">Amazing (3+)</option>
+              <option value="2">Phenomenal (2+)</option>
+            </select>
+          </td>
+          <td><input type="text" name="attr_skill_lore_notes" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sheet-section sheet-knacks">
+    <h2>Knacks</h2>
+    <fieldset class="repeating_knacks">
+      <div class="sheet-repeating-row sheet-knacks-row">
+        <select name="attr_knack_tier">
+          <option value="tier1">Tier 1</option>
+          <option value="tier2">Tier 2</option>
+          <option value="tier3">Tier 3</option>
+          <option value="tier4">Tier 4</option>
+        </select>
+        <input type="text" name="attr_knack_name" placeholder="Knack name" />
+        <textarea name="attr_knack_effect" placeholder="Effect or description"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-weapons">
+    <h2>Weapons</h2>
+    <fieldset class="repeating_weapons">
+      <div class="sheet-repeating-row sheet-weapons-row">
+        <input type="text" name="attr_weapon_name" placeholder="Weapon name" />
+        <input type="text" name="attr_weapon_damage" placeholder="Damage" />
+        <input type="text" name="attr_weapon_range" placeholder="Range" />
+        <input type="text" name="attr_weapon_issue_rating" placeholder="Issue rating" />
+        <textarea name="attr_weapon_special" placeholder="Special rules / ammo"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-social-actions">
+    <h2>Social Scene Actions</h2>
+    <fieldset class="repeating_socialactions">
+      <div class="sheet-repeating-row sheet-socialactions-row">
+        <input type="text" name="attr_social_action_actor" placeholder="Investigator" />
+        <input type="text" name="attr_social_action_target" placeholder="Target" />
+        <input type="text" name="attr_social_action_skill" placeholder="Skill used" />
+        <select name="attr_social_action_result">
+          <option value="pending">Pending</option>
+          <option value="success">Success</option>
+          <option value="reaction_negated">Negated by reaction</option>
+          <option value="fail">Fail</option>
+        </select>
+        <textarea name="attr_social_action_notes" placeholder="Notes or consequences"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-vehicles">
+    <h2>Vehicle Log</h2>
+    <fieldset class="repeating_vehicles">
+      <div class="sheet-repeating-row sheet-vehicles-row">
+        <input type="text" name="attr_vehicle_name" placeholder="Vehicle" />
+        <select name="attr_vehicle_condition">
+          <option value="operational">Operational</option>
+          <option value="lightly_damaged">Lightly Damaged</option>
+          <option value="heavily_damaged">Heavily Damaged</option>
+          <option value="destroyed">Destroyed</option>
+        </select>
+        <input type="text" name="attr_vehicle_last_check" placeholder="Last check / repair" />
+        <textarea name="attr_vehicle_notes" placeholder="Notes, repairs, chase stakes"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-trauma">
+    <h2>Horror &amp; Trauma</h2>
+    <div class="sheet-field-grid">
+      <label>
+        <span>Trauma (Last Result)</span>
+        <input type="text" name="attr_trauma_last_result" />
+      </label>
+      <label>
+        <span>Trauma Modifier (Session)</span>
+        <input type="number" name="attr_trauma_modifier_session" />
+      </label>
+      <label>
+        <span>Horror Dice Ones (This Scene)</span>
+        <input type="number" name="attr_horror_ones_this_scene" min="0" />
+      </label>
+    </div>
+    <label class="sheet-full-width">
+      <span>Trauma Notes</span>
+      <textarea name="attr_trauma_notes"></textarea>
+    </label>
+  </section>
+
+  <section class="sheet-section sheet-injuries">
+    <h2>Injuries</h2>
+    <fieldset class="repeating_injuries">
+      <div class="sheet-repeating-row">
+        <input type="text" name="attr_injury_name" placeholder="Injury name/result" />
+        <input type="text" name="attr_injury_penalty" placeholder="Effects" />
+        <select name="attr_injury_heal_difficulty">
+          <option value="normal">Normal (1 success)</option>
+          <option value="difficult">Difficult (2 successes)</option>
+          <option value="very_difficult">Very Difficult (3 successes)</option>
+        </select>
+        <input type="text" name="attr_injury_recovery_timer" placeholder="Natural recovery" />
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-scenes">
+    <h2>Scene Tracking</h2>
+    <div class="sheet-field-grid">
+      <label>
+        <span>Scene Type</span>
+        <select name="attr_scene_type">
+          <option value="narrative">Narrative</option>
+          <option value="structured">Structured</option>
+          <option value="social">Social</option>
+        </select>
+      </label>
+      <label>
+        <span>Current Round</span>
+        <input type="number" name="attr_scene_round" min="0" />
+      </label>
+      <label>
+        <span>Turn Tracker</span>
+        <input type="text" name="attr_scene_turn" />
+      </label>
+      <label>
+        <span>Social Difficulty</span>
+        <select name="attr_scene_social_difficulty">
+          <option value="easy">Easy</option>
+          <option value="average">Average</option>
+          <option value="hard">Hard</option>
+        </select>
+      </label>
+      <label>
+        <span>Social Success Goal</span>
+        <input type="number" name="attr_scene_social_success_goal" min="0" />
+      </label>
+      <label>
+        <span>Social Successes Earned</span>
+        <input type="number" name="attr_scene_social_successes" min="0" />
+      </label>
+    </div>
+    <label class="sheet-full-width">
+      <span>Scene Notes</span>
+      <textarea name="attr_scene_notes"></textarea>
+    </label>
+  </section>
+</div>
