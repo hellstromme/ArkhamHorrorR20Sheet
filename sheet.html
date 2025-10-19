@@ -3,77 +3,174 @@
   Structural scaffold establishing attribute names and primary sections.
 -->
 <div class="sheet-wrapper">
-  <header class="sheet-header">
-    <h1>Arkham Horror Character Sheet</h1>
-    <div class="sheet-field-grid">
-      <label>
-        <span>Character Name</span>
-        <input type="text" name="attr_character_name" />
-      </label>
-      <label>
-        <span>Character Archetype</span>
-        <input type="text" name="attr_character_archetype" />
-      </label>
-      <label>
-        <span>Player Name</span>
-        <input type="text" name="attr_player_name" />
-      </label>
-      <label>
-        <span>Total XP Earned</span>
-        <input type="number" name="attr_total_xp" min="0" />
-      </label>
-      <label>
-        <span>Unused XP</span>
-        <input type="number" name="attr_unspent_xp" min="0" />
-      </label>
-      <label>
-        <span>Positive Personality Trait</span>
-        <input type="text" name="attr_personality_trait_positive" />
-      </label>
-      <label>
-        <span>Negative Personality Trait</span>
-        <input type="text" name="attr_personality_trait_negative" />
-      </label>
-    </div>
-  </header>
+  <input type="radio" name="attr_sheet_tab" class="sheet-tab-toggle" value="overview" id="sheet-tab-overview" checked />
+  <input type="radio" name="attr_sheet_tab" class="sheet-tab-toggle" value="combat" id="sheet-tab-combat" />
+  <input type="radio" name="attr_sheet_tab" class="sheet-tab-toggle" value="status" id="sheet-tab-status" />
+  <input type="radio" name="attr_sheet_tab" class="sheet-tab-toggle" value="scenes" id="sheet-tab-scenes" />
+  <input type="radio" name="attr_sheet_tab" class="sheet-tab-toggle" value="notes" id="sheet-tab-notes" />
 
-  <section class="sheet-section sheet-resources">
-    <h2>Dice Pool &amp; Insight</h2>
-    <div class="sheet-field-grid">
-      <label>
-        <span>Dice Pool (Current)</span>
-        <input type="number" name="attr_dice_pool_current" min="0" />
-      </label>
-      <label>
-        <span>Dice Pool Limit</span>
-        <input type="number" name="attr_dice_pool_limit" min="0" />
-      </label>
-      <label>
-        <span>Dice Pool Maximum</span>
-        <input type="number" name="attr_dice_pool_max" min="0" />
-      </label>
-      <label>
-        <span>Horror Dice Limit</span>
-        <input type="number" name="attr_horror_dice_limit" min="0" />
-      </label>
-      <label>
-        <span>Insight (Current)</span>
-        <input type="number" name="attr_insight_current" min="0" />
-      </label>
-      <label>
-        <span>Insight Limit</span>
-        <input type="number" name="attr_insight_limit" min="0" />
-      </label>
-    </div>
-  </section>
+  <div class="sheet-tabs">
+    <label for="sheet-tab-overview">Overview</label>
+    <label for="sheet-tab-combat">Combat</label>
+    <label for="sheet-tab-status">Status</label>
+    <label for="sheet-tab-scenes">Scenes</label>
+    <label for="sheet-tab-notes">Notes</label>
+  </div>
 
-  <section class="sheet-section sheet-skills">
-    <h2>Skills</h2>
-    <table>
+  <div class="sheet-tab-content sheet-tab-overview">
+    <header class="sheet-header">
+      <h1>Arkham Horror Character Sheet</h1>
+      <div class="sheet-field-grid">
+        <label>
+          <span>Character Name</span>
+          <input type="text" name="attr_character_name" />
+        </label>
+        <label>
+          <span>Character Archetype</span>
+          <input type="text" name="attr_character_archetype" />
+        </label>
+        <label>
+          <span>Player Name</span>
+          <input type="text" name="attr_player_name" />
+        </label>
+        <label>
+          <span>Total XP Earned</span>
+          <input type="number" name="attr_total_xp" min="0" />
+        </label>
+        <label>
+          <span>Unused XP</span>
+          <input type="number" name="attr_unspent_xp" min="0" />
+        </label>
+        <label>
+          <span>Positive Personality Trait</span>
+          <input type="text" name="attr_personality_trait_positive" />
+        </label>
+        <label>
+          <span>Negative Personality Trait</span>
+          <input type="text" name="attr_personality_trait_negative" />
+        </label>
+      </div>
+    </header>
+
+    <section class="sheet-section sheet-resources">
+      <div class="sheet-section-head">
+        <h2>Dice Pool &amp; Insight</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_refill_dice_pool">Refill Pool</button>
+          <button type="action" name="act_strain_self">Strain Self</button>
+          <button type="action" name="act_apply_damage">Apply Damage</button>
+          <button type="action" name="act_log_horror_die">Log Horror Die</button>
+        </div>
+      </div>
+      <div class="sheet-pool-panels">
+        <div class="sheet-pool-panel">
+          <h3>Dice Pool Overview</h3>
+          <div class="sheet-pool-summary">
+            <div>
+              <span class="sheet-pool-label">Current Dice</span>
+              <span class="sheet-pool-value" name="attr_dice_pool_current"></span>
+            </div>
+            <div>
+              <span class="sheet-pool-label">Pool Limit</span>
+              <span class="sheet-pool-value" name="attr_dice_pool_limit"></span>
+            </div>
+            <div>
+              <span class="sheet-pool-label">Maximum</span>
+              <span class="sheet-pool-value" name="attr_dice_pool_max"></span>
+            </div>
+            <div>
+              <span class="sheet-pool-label">Insight Available</span>
+              <span class="sheet-pool-value" name="attr_insight_current"></span>
+            </div>
+          </div>
+        </div>
+        <div class="sheet-pool-panel sheet-horror-panel">
+          <h3>Horror Dice Overview</h3>
+          <div class="sheet-pool-summary">
+            <div>
+              <span class="sheet-pool-label">Horror Limit</span>
+              <span class="sheet-pool-value" name="attr_horror_dice_limit"></span>
+            </div>
+            <div>
+              <span class="sheet-pool-label">Horror Dice in Pool</span>
+              <span class="sheet-pool-value" name="attr_horror_dice_current"></span>
+            </div>
+            <div>
+              <span class="sheet-pool-label">Ones This Scene</span>
+              <span class="sheet-pool-value" name="attr_horror_ones_this_scene"></span>
+            </div>
+            <div>
+              <span class="sheet-pool-label">Insight Buffer</span>
+              <span class="sheet-pool-value" name="attr_insight_buffer"></span>
+            </div>
+          </div>
+          <div class="sheet-horror-track" aria-live="polite">
+            <div class="sheet-horror-track-row">
+              <span class="sheet-track-label">Limit</span>
+              <span class="sheet-track-indicator sheet-track-indicator--limit" name="attr_horror_limit_track"></span>
+            </div>
+            <div class="sheet-horror-track-row">
+              <span class="sheet-track-label">Current</span>
+              <span class="sheet-track-indicator sheet-track-indicator--current" name="attr_horror_current_track"></span>
+            </div>
+          </div>
+          <label class="sheet-trauma-prompt">
+            <input type="checkbox" name="attr_pending_trauma_check" />
+            <span>Pending Trauma Check</span>
+          </label>
+          <textarea name="attr_pending_trauma_notes" placeholder="Describe trigger or upcoming trauma roll"></textarea>
+        </div>
+      </div>
+      <div class="sheet-field-grid">
+        <label>
+          <span>Dice Pool (Current)</span>
+          <input type="number" name="attr_dice_pool_current" min="0" />
+        </label>
+        <label>
+          <span>Dice Pool Limit</span>
+          <input type="number" name="attr_dice_pool_limit" min="0" />
+        </label>
+        <label>
+          <span>Dice Pool Maximum</span>
+          <input type="number" name="attr_dice_pool_max" min="0" />
+        </label>
+        <label>
+          <span>Horror Dice Limit</span>
+          <input type="number" name="attr_horror_dice_limit" min="0" />
+        </label>
+        <label>
+          <span>Horror Dice in Pool</span>
+          <input type="number" name="attr_horror_dice_current" min="0" />
+        </label>
+        <label>
+          <span>Insight (Current)</span>
+          <input type="number" name="attr_insight_current" min="0" />
+        </label>
+        <label>
+          <span>Insight Limit</span>
+          <input type="number" name="attr_insight_limit" min="0" />
+        </label>
+        <label>
+          <span>Insight Spent This Session</span>
+          <input type="number" name="attr_insight_spent_session" min="0" />
+        </label>
+      </div>
+    </section>
+
+    <section class="sheet-section sheet-skills">
+      <div class="sheet-section-head">
+        <h2>Skills</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_reset_skill_modifiers">Reset Modifiers</button>
+        </div>
+      </div>
+      <p class="sheet-helper-text">Select the current tier for each skill; roll buttons can reference the threshold stored here.</p>
+      <table>
       <thead>
         <tr>
           <th>Skill</th>
-          <th>Level</th>
+          <th>Tier</th>
+          <th>Roll</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -81,278 +178,2409 @@
         <tr>
           <th>Agility</th>
           <td>
-            <select name="attr_skill_agility">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Agility tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_agility" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_agility" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_agility" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_agility" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_agility" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_agility" value="&{template:default} {{name=@{character_name} &#8211; Agility}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_agility}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_agility}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_agility_notes" /></td>
         </tr>
         <tr>
           <th>Athletics</th>
           <td>
-            <select name="attr_skill_athletics">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Athletics tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_athletics" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_athletics" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_athletics" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_athletics" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_athletics" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_athletics" value="&{template:default} {{name=@{character_name} &#8211; Athletics}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_athletics}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_athletics}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_athletics_notes" /></td>
         </tr>
         <tr>
           <th>Wits</th>
           <td>
-            <select name="attr_skill_wits">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Wits tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_wits" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_wits" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_wits" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_wits" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_wits" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_wits" value="&{template:default} {{name=@{character_name} &#8211; Wits}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_wits}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_wits}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_wits_notes" /></td>
         </tr>
         <tr>
           <th>Presence</th>
           <td>
-            <select name="attr_skill_presence">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Presence tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_presence" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_presence" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_presence" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_presence" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_presence" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_presence" value="&{template:default} {{name=@{character_name} &#8211; Presence}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_presence}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_presence}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_presence_notes" /></td>
         </tr>
         <tr>
           <th>Intuition</th>
           <td>
-            <select name="attr_skill_intuition">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Intuition tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_intuition" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_intuition" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_intuition" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_intuition" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_intuition" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_intuition" value="&{template:default} {{name=@{character_name} &#8211; Intuition}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_intuition}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_intuition}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_intuition_notes" /></td>
         </tr>
         <tr>
           <th>Knowledge</th>
           <td>
-            <select name="attr_skill_knowledge">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Knowledge tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_knowledge" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_knowledge" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_knowledge" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_knowledge" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_knowledge" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_knowledge" value="&{template:default} {{name=@{character_name} &#8211; Knowledge}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_knowledge}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_knowledge}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_knowledge_notes" /></td>
         </tr>
         <tr>
           <th>Resolve</th>
           <td>
-            <select name="attr_skill_resolve">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Resolve tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_resolve" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_resolve" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_resolve" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_resolve" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_resolve" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_resolve" value="&{template:default} {{name=@{character_name} &#8211; Resolve}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_resolve}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_resolve}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_resolve_notes" /></td>
         </tr>
         <tr>
           <th>Melee Combat</th>
           <td>
-            <select name="attr_skill_melee_combat">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Melee Combat tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_melee_combat" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_melee_combat" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_melee_combat" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_melee_combat" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_melee_combat" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_melee_combat" value="&{template:default} {{name=@{character_name} &#8211; Melee Combat}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_melee_combat}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_melee_combat}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_melee_combat_notes" /></td>
         </tr>
         <tr>
           <th>Ranged Combat</th>
           <td>
-            <select name="attr_skill_ranged_combat">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Ranged Combat tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_ranged_combat" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_ranged_combat" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_ranged_combat" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_ranged_combat" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_ranged_combat" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_ranged_combat" value="&{template:default} {{name=@{character_name} &#8211; Ranged Combat}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_ranged_combat}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_ranged_combat}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_ranged_combat_notes" /></td>
         </tr>
         <tr>
           <th>Lore</th>
           <td>
-            <select name="attr_skill_lore">
-              <option value="6">Bad (6+)</option>
-              <option value="5">Normal (5+)</option>
-              <option value="4">Good (4+)</option>
-              <option value="3">Amazing (3+)</option>
-              <option value="2">Phenomenal (2+)</option>
-            </select>
+            <div class="sheet-skill-pips" role="radiogroup" aria-label="Lore tier">
+              <label class="sheet-skill-pip" title="Bad (6+)">
+                <input type="radio" name="attr_skill_lore" value="6" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Bad</span>
+                  <span class="sheet-skill-pip-target">6+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Normal (5+)">
+                <input type="radio" name="attr_skill_lore" value="5" checked="checked" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Normal</span>
+                  <span class="sheet-skill-pip-target">5+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Good (4+)">
+                <input type="radio" name="attr_skill_lore" value="4" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Good</span>
+                  <span class="sheet-skill-pip-target">4+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Amazing (3+)">
+                <input type="radio" name="attr_skill_lore" value="3" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Amazing</span>
+                  <span class="sheet-skill-pip-target">3+</span>
+                </span>
+              </label>
+              <label class="sheet-skill-pip" title="Phenomenal (2+)">
+                <input type="radio" name="attr_skill_lore" value="2" />
+                <span class="sheet-skill-pip-circle" aria-hidden="true"></span>
+                <span class="sheet-skill-pip-text">
+                  <span class="sheet-skill-pip-name">Phenomenal</span>
+                  <span class="sheet-skill-pip-target">2+</span>
+                </span>
+              </label>
+            </div>
+          </td>
+          <td class="sheet-skill-roll">
+            <button type="roll" class="sheet-roll-button" name="roll_skill_lore" value="&{template:default} {{name=@{character_name} &#8211; Lore}} {{Dice=?{Dice to Spend|1}}} {{Target=@{skill_lore}+}} {{Successes=[[?{Dice to Spend|1}d6>=@{skill_lore}]]}}">Roll</button>
           </td>
           <td><input type="text" name="attr_skill_lore_notes" /></td>
         </tr>
       </tbody>
-    </table>
-  </section>
+      </table>
+    </section>
 
-  <section class="sheet-section sheet-knacks">
-    <h2>Knacks</h2>
-    <fieldset class="repeating_knacks">
-      <div class="sheet-repeating-row sheet-knacks-row">
-        <select name="attr_knack_tier">
-          <option value="tier1">Tier 1</option>
-          <option value="tier2">Tier 2</option>
-          <option value="tier3">Tier 3</option>
-          <option value="tier4">Tier 4</option>
-        </select>
-        <input type="text" name="attr_knack_name" placeholder="Knack name" />
-        <textarea name="attr_knack_effect" placeholder="Effect or description"></textarea>
+    <section class="sheet-section sheet-knacks">
+      <div class="sheet-section-head">
+        <h2>Knacks</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_add_knack">Add Knack</button>
+        </div>
       </div>
-    </fieldset>
-  </section>
+      <fieldset class="repeating_knacks">
+        <div class="sheet-repeating-row sheet-knacks-row">
+          <select name="attr_knack_tier">
+            <option value="tier1">Tier 1</option>
+            <option value="tier2">Tier 2</option>
+            <option value="tier3">Tier 3</option>
+            <option value="tier4">Tier 4</option>
+          </select>
+          <input type="text" name="attr_knack_name" placeholder="Knack name" />
+          <textarea name="attr_knack_effect" placeholder="Effect or description"></textarea>
+        </div>
+      </fieldset>
+    </section>
+  </div>
 
-  <section class="sheet-section sheet-weapons">
-    <h2>Weapons</h2>
-    <fieldset class="repeating_weapons">
-      <div class="sheet-repeating-row sheet-weapons-row">
-        <input type="text" name="attr_weapon_name" placeholder="Weapon name" />
-        <input type="text" name="attr_weapon_damage" placeholder="Damage" />
-        <input type="text" name="attr_weapon_range" placeholder="Range" />
-        <input type="text" name="attr_weapon_issue_rating" placeholder="Issue rating" />
-        <textarea name="attr_weapon_special" placeholder="Special rules / ammo"></textarea>
+  <div class="sheet-tab-content sheet-tab-combat">
+    <section class="sheet-section sheet-combat-controls">
+      <div class="sheet-section-head">
+        <h2>Combat Controls</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_toggle_advantage">Toggle Advantage</button>
+          <button type="action" name="act_toggle_disadvantage">Toggle Disadvantage</button>
+          <button type="action" name="act_set_engaged">Set Engaged</button>
+          <button type="action" name="act_clear_combat_flags">Clear Flags</button>
+        </div>
       </div>
-    </fieldset>
-  </section>
-
-  <section class="sheet-section sheet-social-actions">
-    <h2>Social Scene Actions</h2>
-    <fieldset class="repeating_socialactions">
-      <div class="sheet-repeating-row sheet-socialactions-row">
-        <input type="text" name="attr_social_action_actor" placeholder="Investigator" />
-        <input type="text" name="attr_social_action_target" placeholder="Target" />
-        <input type="text" name="attr_social_action_skill" placeholder="Skill used" />
-        <select name="attr_social_action_result">
-          <option value="pending">Pending</option>
-          <option value="success">Success</option>
-          <option value="reaction_negated">Negated by reaction</option>
-          <option value="fail">Fail</option>
-        </select>
-        <textarea name="attr_social_action_notes" placeholder="Notes or consequences"></textarea>
+      <div class="sheet-field-grid">
+        <label>
+          <span>Advantage Active</span>
+          <input type="checkbox" name="attr_advantage_active" />
+        </label>
+        <label>
+          <span>Disadvantage Active</span>
+          <input type="checkbox" name="attr_disadvantage_active" />
+        </label>
+        <label>
+          <span>Cover Penalty</span>
+          <input type="number" name="attr_cover_penalty" value="0" />
+        </label>
+        <label>
+          <span>Engaged</span>
+          <input type="checkbox" name="attr_is_engaged" />
+        </label>
+        <label>
+          <span>Reactions Held</span>
+          <input type="number" name="attr_reaction_dice_reserved" min="0" />
+        </label>
+        <label>
+          <span>Weapon Focus</span>
+          <input type="text" name="attr_active_weapon" placeholder="Active weapon or attack" />
+        </label>
       </div>
-    </fieldset>
-  </section>
+      <label class="sheet-full-width">
+        <span>Combat Notes</span>
+        <textarea name="attr_combat_notes" placeholder="Situational modifiers, enemy traits, etc."></textarea>
+      </label>
+    </section>
 
-  <section class="sheet-section sheet-vehicles">
-    <h2>Vehicle Log</h2>
-    <fieldset class="repeating_vehicles">
-      <div class="sheet-repeating-row sheet-vehicles-row">
-        <input type="text" name="attr_vehicle_name" placeholder="Vehicle" />
-        <select name="attr_vehicle_condition">
-          <option value="operational">Operational</option>
-          <option value="lightly_damaged">Lightly Damaged</option>
-          <option value="heavily_damaged">Heavily Damaged</option>
-          <option value="destroyed">Destroyed</option>
-        </select>
-        <input type="text" name="attr_vehicle_last_check" placeholder="Last check / repair" />
-        <textarea name="attr_vehicle_notes" placeholder="Notes, repairs, chase stakes"></textarea>
+    <section class="sheet-section sheet-actions">
+      <div class="sheet-section-head">
+        <h2>Action Economy</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_reset_turn_actions">Reset Turn</button>
+          <button type="action" name="act_reset_scene_actions">Reset Scene</button>
+          <button type="action" name="act_log_simple_action">+ Simple</button>
+          <button type="action" name="act_log_complex_action">+ Complex</button>
+          <button type="action" name="act_log_reaction">+ Reaction</button>
+        </div>
       </div>
-    </fieldset>
-  </section>
-
-  <section class="sheet-section sheet-trauma">
-    <h2>Horror &amp; Trauma</h2>
-    <div class="sheet-field-grid">
-      <label>
-        <span>Trauma (Last Result)</span>
-        <input type="text" name="attr_trauma_last_result" />
-      </label>
-      <label>
-        <span>Trauma Modifier (Session)</span>
-        <input type="number" name="attr_trauma_modifier_session" />
-      </label>
-      <label>
-        <span>Horror Dice Ones (This Scene)</span>
-        <input type="number" name="attr_horror_ones_this_scene" min="0" />
-      </label>
-    </div>
-    <label class="sheet-full-width">
-      <span>Trauma Notes</span>
-      <textarea name="attr_trauma_notes"></textarea>
-    </label>
-  </section>
-
-  <section class="sheet-section sheet-injuries">
-    <h2>Injuries</h2>
-    <fieldset class="repeating_injuries">
-      <div class="sheet-repeating-row">
-        <input type="text" name="attr_injury_name" placeholder="Injury name/result" />
-        <input type="text" name="attr_injury_penalty" placeholder="Effects" />
-        <select name="attr_injury_heal_difficulty">
-          <option value="normal">Normal (1 success)</option>
-          <option value="difficult">Difficult (2 successes)</option>
-          <option value="very_difficult">Very Difficult (3 successes)</option>
-        </select>
-        <input type="text" name="attr_injury_recovery_timer" placeholder="Natural recovery" />
+      <div class="sheet-field-grid sheet-action-metrics">
+        <label>
+          <span>Simple Actions (Turn)</span>
+          <input type="number" name="attr_actions_turn_simple" min="0" />
+        </label>
+        <label>
+          <span>Complex Actions (Turn)</span>
+          <input type="number" name="attr_actions_turn_complex" min="0" />
+        </label>
+        <label>
+          <span>Reactions (Turn)</span>
+          <input type="number" name="attr_actions_turn_reactions" min="0" />
+        </label>
+        <label>
+          <span>Dice Spent (Turn)</span>
+          <input type="number" name="attr_dice_spent_turn" min="0" />
+        </label>
+        <label>
+          <span>Simple Actions (Scene)</span>
+          <input type="number" name="attr_actions_scene_simple" min="0" />
+        </label>
+        <label>
+          <span>Complex Actions (Scene)</span>
+          <input type="number" name="attr_actions_scene_complex" min="0" />
+        </label>
+        <label>
+          <span>Reactions (Scene)</span>
+          <input type="number" name="attr_actions_scene_reactions" min="0" />
+        </label>
+        <label>
+          <span>Dice Spent (Scene)</span>
+          <input type="number" name="attr_dice_spent_scene" min="0" />
+        </label>
       </div>
-    </fieldset>
-  </section>
+      <div class="sheet-action-flags">
+        <label>
+          <input type="checkbox" name="attr_same_task_attempted_turn" />
+          <span>Same task attempted this turn</span>
+        </label>
+        <label>
+          <input type="checkbox" name="attr_same_task_attempted_scene" />
+          <span>Same task attempted this scene</span>
+        </label>
+        <label>
+          <input type="checkbox" name="attr_action_reserve_dice_flag" />
+          <span>Dice reserved for reactions</span>
+        </label>
+        <label>
+          <input type="checkbox" name="attr_action_restriction_noted" />
+          <span>Restriction/limit noted</span>
+        </label>
+      </div>
+      <label class="sheet-full-width">
+        <span>Action Notes</span>
+        <textarea name="attr_action_notes" placeholder="Track once-per-scene abilities, declared reactions, or task variants."></textarea>
+      </label>
+    </section>
 
-  <section class="sheet-section sheet-scenes">
-    <h2>Scene Tracking</h2>
-    <div class="sheet-field-grid">
-      <label>
-        <span>Scene Type</span>
-        <select name="attr_scene_type">
-          <option value="narrative">Narrative</option>
-          <option value="structured">Structured</option>
-          <option value="social">Social</option>
-        </select>
+    <section class="sheet-section sheet-weapons">
+      <div class="sheet-section-head">
+        <h2>Weapons</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_add_weapon">Add Weapon</button>
+        </div>
+      </div>
+      <fieldset class="repeating_weapons">
+        <div class="sheet-repeating-row sheet-weapons-row">
+          <input type="text" name="attr_weapon_name" placeholder="Weapon name" />
+          <select name="attr_weapon_type">
+            <option value="melee">Melee</option>
+            <option value="ranged">Ranged</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="text" name="attr_weapon_damage" placeholder="Damage" />
+          <input type="text" name="attr_weapon_injury_rating" placeholder="Injury rating" />
+          <input type="text" name="attr_weapon_range" placeholder="Range" />
+          <input type="number" name="attr_weapon_cover_penalty" value="0" placeholder="Cover penalty" />
+          <select name="attr_weapon_skill_target">
+            <option value="@{skill_melee_combat}">Melee Combat</option>
+            <option value="@{skill_ranged_combat}">Ranged Combat</option>
+            <option value="@{skill_agility}">Agility</option>
+            <option value="@{skill_athletics}">Athletics</option>
+            <option value="@{skill_wits}">Wits</option>
+            <option value="@{skill_presence}">Presence</option>
+            <option value="@{skill_intuition}">Intuition</option>
+            <option value="@{skill_knowledge}">Knowledge</option>
+            <option value="@{skill_resolve}">Resolve</option>
+            <option value="@{skill_lore}">Lore</option>
+          </select>
+          <select name="attr_weapon_reaction_skill">
+            <option value="@{skill_agility}">Agility (Ranged Reaction)</option>
+            <option value="@{skill_melee_combat}">Melee Combat (Parry)</option>
+            <option value="@{skill_athletics}">Athletics</option>
+            <option value="@{skill_resolve}">Resolve</option>
+          </select>
+          <label class="sheet-weapon-engaged">
+            <input type="checkbox" name="attr_weapon_requires_engaged" />
+            <span>Requires engaged</span>
+          </label>
+          <textarea class="sheet-weapon-notes" name="attr_weapon_special" placeholder="Special rules, ammo, or situational notes"></textarea>
+          <div class="sheet-weapon-buttons">
+            <button type="roll" class="sheet-roll-button" name="roll_weapon_attack" value="&{template:default} {{name=@{character_name} &#8211; @{weapon_name}}} {{Type=@{weapon_type}}} {{Dice=?{Dice to Spend|1}}} {{Advantage=[[@{advantage_active}]]}} {{Disadvantage=[[@{disadvantage_active}]]}} {{Cover Penalty=[[@{cover_penalty}+@{weapon_cover_penalty}]]}} {{Target=[[@{weapon_skill_target}+@{cover_penalty}+@{weapon_cover_penalty}]]}} {{Successes=[[[[?{Dice to Spend|1}+@{advantage_active}+@{disadvantage_active}]]d6dl@{advantage_active}dh@{disadvantage_active}>=(@{weapon_skill_target}+@{cover_penalty}+@{weapon_cover_penalty})]]}} {{Damage=@{weapon_damage}}} {{Injury Rating=@{weapon_injury_rating}}} {{Requires Engaged?=[[@{weapon_requires_engaged}]]}} {{Currently Engaged?=[[@{is_engaged}]]}} {{Notes=@{weapon_special}}}">Attack</button>
+            <button type="roll" class="sheet-roll-button" name="roll_weapon_reaction" value="&{template:default} {{name=@{character_name} &#8211; Reaction vs. @{weapon_name}}} {{Type=@{weapon_type}}} {{Dice=?{Reaction Dice to Spend|@{reaction_dice_reserved}}}} {{Advantage=[[@{advantage_active}]]}} {{Disadvantage=[[@{disadvantage_active}]]}} {{Target=[[@{weapon_reaction_skill}]]}} {{Successes=[[[[?{Reaction Dice to Spend|@{reaction_dice_reserved}}+@{advantage_active}+@{disadvantage_active}]]d6dl@{advantage_active}dh@{disadvantage_active}>=@{weapon_reaction_skill}]]}} {{Engaged State=[[@{is_engaged}]]}} {{Notes=Reaction attempt to avoid or counter @{weapon_name}.}}">Reaction</button>
+          </div>
+        </div>
+      </fieldset>
+    </section>
+  </div>
+
+  <div class="sheet-tab-content sheet-tab-status">
+    <section class="sheet-section sheet-trauma">
+      <div class="sheet-section-head">
+        <h2>Horror &amp; Trauma</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_roll_trauma">Roll Trauma</button>
+          <button type="action" name="act_reduce_horror">Reduce Horror</button>
+        </div>
+      </div>
+      <div class="sheet-trauma-tracker">
+        <div class="sheet-field-grid">
+          <label>
+            <span>Last Trauma Result</span>
+            <input type="text" name="attr_trauma_last_result" />
+          </label>
+          <label>
+            <span>Trauma Roll Total</span>
+            <input type="number" name="attr_trauma_roll_total" min="0" />
+          </label>
+          <label>
+            <span>Session Modifier</span>
+            <input type="number" name="attr_trauma_modifier_session" />
+          </label>
+          <label>
+            <span>Horror Dice Ones (Scene)</span>
+            <input type="number" name="attr_horror_ones_this_scene" min="0" />
+          </label>
+          <label>
+            <span>Insight Reserved</span>
+            <input type="number" name="attr_insight_buffer" min="0" />
+          </label>
+          <label>
+            <span>Introspection Attempts (Scene)</span>
+            <input type="number" name="attr_introspection_attempts" min="0" />
+          </label>
+          <label>
+            <span>Counseling Attempts (Scene)</span>
+            <input type="number" name="attr_counseling_attempts" min="0" />
+          </label>
+          <label>
+            <span>Current Trauma Duration</span>
+            <select name="attr_trauma_duration_scope">
+              <option value="turn">Until end of turn</option>
+              <option value="scene">Until end of scene</option>
+              <option value="session">Until end of session</option>
+              <option value="ongoing">Ongoing</option>
+            </select>
+          </label>
+          <label>
+            <span>Insight Spent to Resist</span>
+            <input type="number" name="attr_trauma_insight_spent" min="0" />
+          </label>
+          <label class="sheet-checkbox-field">
+            <span>Personality Triggered?</span>
+            <input type="checkbox" name="attr_trauma_personality_triggered" value="1" />
+          </label>
+        </div>
+        <label class="sheet-full-width">
+          <span>Trauma Notes</span>
+          <textarea name="attr_trauma_notes" placeholder="Record effects, triggered personality traits, or mitigation steps."></textarea>
+        </label>
+        <details class="sheet-reference-card">
+          <summary>Table 2-2: Trauma Reference</summary>
+          <table class="sheet-reference-table">
+            <thead>
+              <tr>
+                <th>Roll</th>
+                <th>Result</th>
+                <th>Summary</th>
+                <th>Insight Mitigation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1–2</td>
+                <td>Subtle Strangeness</td>
+                <td>Brief unsettling phenomenon; no mechanical effect.</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Shocked</td>
+                <td>Discard one die or increase future trauma rolls by +1 if none available.</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Stunned</td>
+                <td>Discard all dice or increase future trauma rolls by +1 if none available.</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>5–7</td>
+                <td>Overcome by Horror</td>
+                <td>Trigger negative personality unless 1 insight is spent.</td>
+                <td>Spend 1 insight to avoid.</td>
+              </tr>
+              <tr>
+                <td>8–10</td>
+                <td>Mind Undone</td>
+                <td>Trigger negative personality with extended duration unless 2 insight are spent; future rolls +1.</td>
+                <td>Spend 2 insight to avoid.</td>
+              </tr>
+              <tr>
+                <td>11+</td>
+                <td>Lost Forever</td>
+                <td>Character removed from play without drastic intervention.</td>
+                <td>Reduce insight limit by 2 to survive.</td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
+        <fieldset class="repeating_trauma">
+          <div class="sheet-repeating-row sheet-trauma-row">
+            <label>
+              <span>Roll Total</span>
+              <input type="number" name="attr_trauma_entry_roll" min="0" />
+            </label>
+            <label>
+              <span>Table Result</span>
+              <select name="attr_trauma_entry_result">
+                <option value="subtle_strangeness">Subtle Strangeness (1–2)</option>
+                <option value="shocked">Shocked (3)</option>
+                <option value="stunned">Stunned (4)</option>
+                <option value="overcome">Overcome by Horror (5–7)</option>
+                <option value="mind_undone">Mind Undone (8–10)</option>
+                <option value="lost_forever">Lost Forever (11+)</option>
+              </select>
+            </label>
+            <label>
+              <span>Duration</span>
+              <select name="attr_trauma_entry_duration">
+                <option value="turn">Turn</option>
+                <option value="scene">Scene</option>
+                <option value="session">Session</option>
+                <option value="ongoing">Ongoing</option>
+              </select>
+            </label>
+            <label>
+              <span>Insight Spent</span>
+              <input type="number" name="attr_trauma_entry_insight" min="0" />
+            </label>
+            <label class="sheet-checkbox-field">
+              <span>Personality Triggered</span>
+              <input type="checkbox" name="attr_trauma_entry_personality" value="1" />
+            </label>
+            <textarea name="attr_trauma_entry_notes" placeholder="Effects, roleplay, mitigation, recovery milestones."></textarea>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <section class="sheet-section sheet-horror-actions">
+      <div class="sheet-section-head">
+        <h2>Horror Recovery</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_apply_horror_gain">Apply Horror Gain</button>
+          <button type="action" name="act_apply_introspection">Introspection</button>
+          <button type="action" name="act_apply_counseling">Counseling</button>
+          <button type="action" name="act_apply_week_rest">Week of Rest</button>
+          <button type="action" name="act_reduce_horror">Direct Reduction</button>
+        </div>
+      </div>
+      <div class="sheet-horror-forms">
+        <div class="sheet-horror-card">
+          <h3>Gain &amp; Dice Tracking</h3>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Horror Gained</span>
+              <input type="number" name="attr_horror_gain_amount" value="1" min="0" />
+            </label>
+            <label>
+              <span>Trigger / Source</span>
+              <input type="text" name="attr_horror_gain_reason" placeholder="Encounter, spell, revelation" />
+            </label>
+            <label>
+              <span>Resulted Limit</span>
+              <span class="sheet-value-readout" name="attr_horror_dice_limit"></span>
+            </label>
+            <button type="action" name="act_apply_horror_gain" class="sheet-primary-action">Apply Gain</button>
+          </div>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Horror Die Result</span>
+              <select name="attr_horror_die_face">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </label>
+            <label>
+              <span>Number of Ones</span>
+              <input type="number" name="attr_horror_die_ones" value="1" min="1" />
+            </label>
+            <label>
+              <span>Roll Context</span>
+              <input type="text" name="attr_horror_die_notes" placeholder="Action or ability rolled" />
+            </label>
+            <button type="action" name="act_log_horror_die" class="sheet-primary-action">Log Die Result</button>
+          </div>
+        </div>
+        <div class="sheet-horror-card">
+          <h3>Recovery Actions</h3>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Introspection Successes</span>
+              <input type="number" name="attr_introspection_successes" value="1" min="0" />
+            </label>
+            <label>
+              <span>Introspection Notes</span>
+              <input type="text" name="attr_introspection_notes" placeholder="Meditation, hobby, prayer" />
+            </label>
+            <button type="action" name="act_apply_introspection" class="sheet-secondary-action">Apply Introspection</button>
+          </div>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Counseling Successes</span>
+              <input type="number" name="attr_counseling_successes" value="1" min="0" />
+            </label>
+            <label>
+              <span>Counseling Partner</span>
+              <input type="text" name="attr_counseling_target" placeholder="Who provided support" />
+            </label>
+            <label>
+              <span>Counseling Notes</span>
+              <input type="text" name="attr_counseling_notes" placeholder="Focus of conversation or therapy" />
+            </label>
+            <button type="action" name="act_apply_counseling" class="sheet-secondary-action">Apply Counseling</button>
+          </div>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Direct Horror Reduction</span>
+              <input type="number" name="attr_horror_reduce_amount" value="1" min="0" />
+            </label>
+            <label>
+              <span>Reduction Notes</span>
+              <input type="text" name="attr_horror_reduce_notes" placeholder="Spell, reward, or scene effect" />
+            </label>
+            <label>
+              <span>Week of Rest Notes</span>
+              <input type="text" name="attr_horror_rest_notes" placeholder="Location, allies, or downtime" />
+            </label>
+            <button type="action" name="act_apply_week_rest" class="sheet-secondary-action">Week of Rest</button>
+          </div>
+        </div>
+      </div>
+      <fieldset class="repeating_horrorlog">
+        <div class="sheet-repeating-row sheet-horrorlog-row">
+          <select name="attr_horror_event_type">
+            <option value="gain">Gain</option>
+            <option value="die">Die Result</option>
+            <option value="introspection">Introspection</option>
+            <option value="counseling">Counseling</option>
+            <option value="reduction">Reduction</option>
+            <option value="rest">Week Rest</option>
+          </select>
+          <input type="number" name="attr_horror_event_amount" placeholder="± Amount" />
+          <input type="number" name="attr_horror_event_total" placeholder="New Limit" />
+          <input type="text" name="attr_horror_event_notes" placeholder="Details" />
+          <input type="text" name="attr_horror_event_timestamp" placeholder="Timestamp" />
+        </div>
+      </fieldset>
+    </section>
+
+    <section class="sheet-section sheet-insight-actions">
+      <div class="sheet-section-head">
+        <h2>Insight Spending</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_spend_insight_success">Bonus Success</button>
+          <button type="action" name="act_spend_insight_advantage">Gain Advantage</button>
+          <button type="action" name="act_spend_insight_clue">Request Clue</button>
+          <button type="action" name="act_spend_insight_edit">Narrative Edit</button>
+          <button type="action" name="act_spend_insight_survival">Cheat Death</button>
+        </div>
+      </div>
+      <div class="sheet-insight-grid">
+        <div class="sheet-insight-card">
+          <h3>Quick Options</h3>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Bonus Success Notes</span>
+              <input type="text" name="attr_insight_success_notes" placeholder="Action benefiting from bonus success" />
+            </label>
+            <button type="action" name="act_spend_insight_success" class="sheet-primary-action">Spend 1 Insight</button>
+          </div>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Advantage Notes</span>
+              <input type="text" name="attr_insight_advantage_notes" placeholder="Upcoming roll receiving advantage" />
+            </label>
+            <button type="action" name="act_spend_insight_advantage" class="sheet-primary-action">Spend 1 Insight</button>
+          </div>
+        </div>
+        <div class="sheet-insight-card">
+          <h3>Custom Requests</h3>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Clue Cost</span>
+              <input type="number" name="attr_insight_clue_cost" value="1" min="1" />
+            </label>
+            <label>
+              <span>Clue Notes</span>
+              <input type="text" name="attr_insight_clue_notes" placeholder="Question or mystery" />
+            </label>
+            <button type="action" name="act_spend_insight_clue" class="sheet-secondary-action">Spend for Clue</button>
+          </div>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Narrative Edit Cost</span>
+              <input type="number" name="attr_insight_edit_cost" value="1" min="1" />
+            </label>
+            <label>
+              <span>Narrative Edit Notes</span>
+              <input type="text" name="attr_insight_edit_notes" placeholder="Item, ally, or scene detail" />
+            </label>
+            <button type="action" name="act_spend_insight_edit" class="sheet-secondary-action">Spend for Edit</button>
+          </div>
+          <div class="sheet-inline-grid">
+            <label>
+              <span>Cheat Death Notes</span>
+              <input type="text" name="attr_insight_survival_notes" placeholder="Describe the narrow escape" />
+            </label>
+            <button type="action" name="act_spend_insight_survival" class="sheet-danger-action">Reduce Limit by 2</button>
+          </div>
+        </div>
+      </div>
+      <fieldset class="repeating_insightlog">
+        <div class="sheet-repeating-row sheet-insightlog-row">
+          <select name="attr_insight_log_type">
+            <option value="bonus_success">Bonus Success</option>
+            <option value="advantage">Advantage</option>
+            <option value="clue">Clue</option>
+            <option value="narrative_edit">Narrative Edit</option>
+            <option value="survival">Cheat Death</option>
+          </select>
+          <input type="number" name="attr_insight_log_amount" placeholder="Insight Spent" />
+          <input type="text" name="attr_insight_log_notes" placeholder="Outcome or GM notes" />
+          <input type="text" name="attr_insight_log_timestamp" placeholder="Timestamp" />
+        </div>
+      </fieldset>
+    </section>
+
+    <section class="sheet-section sheet-injuries">
+      <div class="sheet-section-head">
+        <h2>Injuries</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_add_injury">Add Injury</button>
+          <button type="action" name="act_roll_injury">Roll on Table 2-1</button>
+        </div>
+      </div>
+      <details class="sheet-reference-card">
+        <summary>Table 2-1: Injury Reference</summary>
+        <table class="sheet-reference-table">
+          <thead>
+            <tr>
+              <th>Roll</th>
+              <th>Result</th>
+              <th>Penalty Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Heavy Blow</td>
+              <td>Knocked prone; spend 1 die before other actions next turn.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Slowed</td>
+              <td>Movement halved.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Nasty Cut</td>
+              <td>Dice pool limit cannot exceed 3 until healed.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Concussed</td>
+              <td>-1 to dice on Wits, Intuition, Knowledge, Lore complex actions.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Injured Arm</td>
+              <td>Arm actions become complex; -1 to Athletics, Agility, Ranged, Melee complex actions.</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Injured Leg</td>
+              <td>Leg actions become complex; -1 to Athletics, Agility, Melee complex actions.</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Loss of a Sense</td>
+              <td>Sense lost; requires 2 successes to heal.</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Severely Injured</td>
+              <td>-2 to all complex actions; requires 2 successes to heal.</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Comatose</td>
+              <td>Dice pool limit reduced to 0 until healed; requires 2 successes.</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Dire</td>
+              <td>Dice pool limit 0; requires 3 successes and medical care within an hour.</td>
+            </tr>
+            <tr>
+              <td>11+</td>
+              <td>Dead</td>
+              <td>Character death.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td>Burned</td>
+              <td>All complex actions at disadvantage; discard die on roll of 1.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td>Choking</td>
+              <td>Simple actions cost 2 dice; complex actions become difficult.</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td>Sickened</td>
+              <td>Roll 1d3 to set maximum dice spent on complex actions.</td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+      <fieldset class="repeating_injuries">
+        <div class="sheet-repeating-row sheet-injury-row">
+          <div class="sheet-injury-grid">
+            <label>
+              <span>Roll Total</span>
+              <input type="number" name="attr_injury_roll_total" min="0" />
+            </label>
+            <label>
+              <span>Table Result</span>
+              <select name="attr_injury_table_result">
+                <option value="heavy_blow">Heavy Blow (1)</option>
+                <option value="slowed">Slowed (2)</option>
+                <option value="nasty_cut">Nasty Cut (3)</option>
+                <option value="concussed">Concussed (4)</option>
+                <option value="injured_arm">Injured Arm (5)</option>
+                <option value="injured_leg">Injured Leg (6)</option>
+                <option value="loss_of_sense">Loss of a Sense (7)</option>
+                <option value="severely_injured">Severely Injured (8)</option>
+                <option value="comatose">Comatose (9)</option>
+                <option value="dire">Dire (10)</option>
+                <option value="dead">Dead (11+)</option>
+                <option value="burned">Burned</option>
+                <option value="choking">Choking</option>
+                <option value="sickened">Sickened</option>
+                <option value="custom">Custom</option>
+              </select>
+            </label>
+            <label>
+              <span>Injury Name / Notes</span>
+              <input type="text" name="attr_injury_name" placeholder="Custom label or narrative detail" />
+            </label>
+            <label>
+              <span>Healing Difficulty</span>
+              <select name="attr_injury_heal_difficulty">
+                <option value="normal">Normal (1 success)</option>
+                <option value="difficult">Difficult (2 successes)</option>
+                <option value="very_difficult">Very Difficult (3 successes)</option>
+              </select>
+            </label>
+            <label>
+              <span>Natural Healing (Days)</span>
+              <input type="number" name="attr_injury_recovery_days" min="0" />
+            </label>
+            <label>
+              <span>Next Check / Deadline</span>
+              <input type="text" name="attr_injury_recovery_timer" placeholder="Date, scene, or milestone" />
+            </label>
+            <label>
+              <span>Medical Attempts (Scene)</span>
+              <input type="number" name="attr_injury_medical_attempts" min="0" />
+            </label>
+          </div>
+          <div class="sheet-injury-flags">
+            <label class="sheet-checkbox-field">
+              <span>Penalty Applied</span>
+              <input type="checkbox" name="attr_injury_penalty_active" value="1" />
+            </label>
+            <label class="sheet-checkbox-field">
+              <span>Requires Insight</span>
+              <input type="checkbox" name="attr_injury_requires_insight" value="1" />
+            </label>
+            <label class="sheet-checkbox-field">
+              <span>Burned Effects</span>
+              <input type="checkbox" name="attr_injury_flag_burned" value="1" />
+            </label>
+            <label class="sheet-checkbox-field">
+              <span>Choking Effects</span>
+              <input type="checkbox" name="attr_injury_flag_choking" value="1" />
+            </label>
+            <label class="sheet-checkbox-field">
+              <span>Sickened Effects</span>
+              <input type="checkbox" name="attr_injury_flag_sickened" value="1" />
+            </label>
+            <label>
+              <span>Penalty Details</span>
+              <textarea name="attr_injury_penalty" placeholder="Track dice modifiers, simple/complex conversion, or restrictions."></textarea>
+            </label>
+            <label>
+              <span>Care Plan &amp; Notes</span>
+              <textarea name="attr_injury_notes" placeholder="Treatment, strain consequences, or narrative flavor."></textarea>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+      <label class="sheet-full-width">
+        <span>Condition Notes</span>
+        <textarea name="attr_condition_notes" placeholder="Temporary effects, penalties, or reminders"></textarea>
       </label>
-      <label>
-        <span>Current Round</span>
-        <input type="number" name="attr_scene_round" min="0" />
+    </section>
+  </div>
+
+  <div class="sheet-tab-content sheet-tab-scenes">
+    <section class="sheet-section sheet-scenes">
+      <div class="sheet-section-head">
+        <h2>Scene Tracking</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_reset_scene">Reset Scene</button>
+          <button type="action" name="act_advance_round">Advance Round</button>
+        </div>
+      </div>
+      <div class="sheet-field-grid">
+        <label>
+          <span>Scene Type</span>
+          <select name="attr_scene_type">
+            <option value="narrative">Narrative</option>
+            <option value="structured">Structured</option>
+            <option value="social">Social</option>
+          </select>
+        </label>
+        <label>
+          <span>Current Round</span>
+          <input type="number" name="attr_scene_round" min="0" />
+        </label>
+        <label>
+          <span>Turn Tracker</span>
+          <input type="text" name="attr_scene_turn" />
+        </label>
+        <label>
+          <span>Social Difficulty</span>
+          <select name="attr_scene_social_difficulty">
+            <option value="easy">Easy</option>
+            <option value="average">Average</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <label>
+          <span>Social Success Goal</span>
+          <input type="number" name="attr_scene_social_success_goal" min="0" />
+        </label>
+        <label>
+          <span>Social Successes Earned</span>
+          <input type="number" name="attr_scene_social_successes" min="0" />
+        </label>
+        <label>
+          <span>Reactions Logged</span>
+          <input type="number" name="attr_scene_reactions_logged" min="0" />
+        </label>
+        <label>
+          <span>Scene Advantage Pool</span>
+          <input type="number" name="attr_scene_advantage_pool" min="0" />
+        </label>
+      </div>
+      <label class="sheet-full-width">
+        <span>Scene Notes</span>
+        <textarea name="attr_scene_notes"></textarea>
       </label>
-      <label>
-        <span>Turn Tracker</span>
-        <input type="text" name="attr_scene_turn" />
-      </label>
-      <label>
-        <span>Social Difficulty</span>
-        <select name="attr_scene_social_difficulty">
-          <option value="easy">Easy</option>
-          <option value="average">Average</option>
-          <option value="hard">Hard</option>
-        </select>
-      </label>
-      <label>
-        <span>Social Success Goal</span>
-        <input type="number" name="attr_scene_social_success_goal" min="0" />
-      </label>
-      <label>
-        <span>Social Successes Earned</span>
-        <input type="number" name="attr_scene_social_successes" min="0" />
-      </label>
-    </div>
-    <label class="sheet-full-width">
-      <span>Scene Notes</span>
-      <textarea name="attr_scene_notes"></textarea>
-    </label>
-  </section>
+    </section>
+
+    <section class="sheet-section sheet-social-actions">
+      <div class="sheet-section-head">
+        <h2>Social Scene Actions</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_add_social_action">Add Social Action</button>
+        </div>
+      </div>
+      <fieldset class="repeating_socialactions">
+        <div class="sheet-repeating-row sheet-socialactions-row">
+          <input type="text" name="attr_social_action_actor" placeholder="Investigator" />
+          <input type="text" name="attr_social_action_target" placeholder="Target" />
+          <input type="text" name="attr_social_action_skill" placeholder="Skill used" />
+          <select name="attr_social_action_result">
+            <option value="pending">Pending</option>
+            <option value="success">Success</option>
+            <option value="reaction_negated">Negated by reaction</option>
+            <option value="fail">Fail</option>
+          </select>
+          <textarea name="attr_social_action_notes" placeholder="Notes or consequences"></textarea>
+        </div>
+      </fieldset>
+    </section>
+
+    <section class="sheet-section sheet-vehicles">
+      <div class="sheet-section-head">
+        <h2>Vehicle Log</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_add_vehicle">Add Vehicle</button>
+        </div>
+      </div>
+      <fieldset class="repeating_vehicles">
+        <div class="sheet-repeating-row sheet-vehicles-row">
+          <input type="text" name="attr_vehicle_name" placeholder="Vehicle" />
+          <select name="attr_vehicle_condition">
+            <option value="operational">Operational</option>
+            <option value="lightly_damaged">Lightly Damaged</option>
+            <option value="heavily_damaged">Heavily Damaged</option>
+            <option value="destroyed">Destroyed</option>
+          </select>
+          <input type="text" name="attr_vehicle_last_check" placeholder="Last check / repair" />
+          <textarea name="attr_vehicle_notes" placeholder="Notes, repairs, chase stakes"></textarea>
+        </div>
+      </fieldset>
+    </section>
+  </div>
+
+  <div class="sheet-tab-content sheet-tab-notes">
+    <section class="sheet-section sheet-notes">
+      <div class="sheet-section-head">
+        <h2>Investigator Notes</h2>
+        <div class="sheet-quick-actions">
+          <button type="action" name="act_add_clue">Add Clue</button>
+          <button type="action" name="act_reset_notes">Clear Notes</button>
+        </div>
+      </div>
+      <div class="sheet-notes-grid">
+        <label>
+          <span>Clue Log</span>
+          <textarea name="attr_clue_log" placeholder="Important discoveries, leads, or mysteries"></textarea>
+        </label>
+        <label>
+          <span>Allies &amp; Contacts</span>
+          <textarea name="attr_contacts_log" placeholder="Allies, patrons, or organizations"></textarea>
+        </label>
+        <label class="sheet-full-width">
+          <span>Personal Journal</span>
+          <textarea name="attr_personal_journal" placeholder="Session recap, personal thoughts, or outstanding questions"></textarea>
+        </label>
+      </div>
+    </section>
+  </div>
 </div>
+
+<script type="text/worker">
+const toInt = (value, fallback = 0) => {
+  const parsed = parseInt(value, 10);
+  return Number.isNaN(parsed) ? fallback : parsed;
+};
+
+const isoTimestamp = () => {
+  try {
+    return new Date().toISOString();
+  } catch (err) {
+    return '';
+  }
+};
+
+const buildRepeatingAttrs = (section, values) => {
+  const id = generateRowID();
+  return Object.entries(values).reduce((acc, [key, val]) => {
+    acc[`repeating_${section}_${id}_${key}`] = val;
+    return acc;
+  }, {});
+};
+
+const isChecked = (value) => value === true || value === 'on' || value === 1 || value === '1';
+
+const toggleCheckboxAttr = (attr) => {
+  getAttrs([attr], (values) => {
+    const current = values[attr];
+    const next = isChecked(current) ? 0 : 'on';
+    setAttrs({ [attr]: next }, { silent: true });
+  });
+};
+
+const promptNumber = (query, callback) => {
+  if (typeof callback !== 'function') {
+    return;
+  }
+  startRoll(`[[?{${query}}]]`, (results) => {
+    const value = toInt(results.results.total.result, 0);
+    finishRoll(results.rollId, {});
+    callback(Math.max(0, value));
+  });
+};
+
+const refillDicePoolState = (values, overrideLimit = null) => {
+  const limit = Math.max(0, overrideLimit !== null ? overrideLimit : toInt(values.dice_pool_limit, 0));
+  const horrorLimit = Math.max(0, toInt(values.horror_dice_limit, 0));
+  const poolMax = Math.max(0, toInt(values.dice_pool_max, 0));
+  const newHorror = Math.min(limit, horrorLimit);
+  return Object.assign(
+    {
+      dice_pool_current: limit,
+      dice_pool_limit: limit,
+      horror_dice_current: newHorror
+    },
+    computeHorrorTrack(horrorLimit, newHorror, poolMax, limit)
+  );
+};
+
+const applyDiceLimitReduction = (values, reduction) => {
+  const currentLimit = Math.max(0, toInt(values.dice_pool_limit, 0));
+  const currentDice = Math.max(0, toInt(values.dice_pool_current, 0));
+  const horrorDice = Math.max(0, toInt(values.horror_dice_current, 0));
+  const newLimit = Math.max(0, currentLimit - Math.max(0, reduction));
+  const newCurrent = Math.min(newLimit, currentDice);
+  const removed = Math.max(0, currentDice - newCurrent);
+  const regularDice = Math.max(0, currentDice - horrorDice);
+  let newHorror = horrorDice;
+  if (removed > regularDice) {
+    newHorror = Math.max(0, horrorDice - (removed - regularDice));
+  }
+  newHorror = Math.min(newHorror, newCurrent);
+  const horrorLimit = Math.max(0, toInt(values.horror_dice_limit, 0));
+  const poolMax = Math.max(0, toInt(values.dice_pool_max, 0));
+  return Object.assign(
+    {
+      dice_pool_limit: newLimit,
+      dice_pool_current: newCurrent,
+      horror_dice_current: newHorror
+    },
+    computeHorrorTrack(horrorLimit, newHorror, poolMax, newLimit)
+  );
+};
+
+const HORROR_TRACK_MIN = 6;
+const HORROR_TRACK_MAX = 12;
+const HORROR_SYMBOL_FILLED = '●';
+const HORROR_SYMBOL_EMPTY = '○';
+
+const renderHorrorTrack = (filled, length) => {
+  const safeLength = Math.max(
+    HORROR_TRACK_MIN,
+    Math.min(HORROR_TRACK_MAX, Math.floor(length || 0))
+  );
+  const safeFilled = Math.max(0, Math.floor(filled || 0));
+  const displayFilled = Math.min(safeFilled, safeLength);
+  const segments = [];
+  for (let i = 0; i < safeLength; i += 1) {
+    segments.push(i < displayFilled ? HORROR_SYMBOL_FILLED : HORROR_SYMBOL_EMPTY);
+  }
+  if (safeFilled > safeLength) {
+    segments.push('+');
+  }
+  return segments.join(' ');
+};
+
+const computeHorrorTrack = (limit, current, poolMax = 0, poolLimit = 0) => {
+  const span = Math.min(
+    HORROR_TRACK_MAX,
+    Math.max(HORROR_TRACK_MIN, limit || 0, current || 0, poolMax || 0, poolLimit || 0)
+  );
+  const cappedCurrent = Math.min(Math.max(0, Math.floor(current || 0)), span);
+  const cappedLimit = Math.max(0, Math.floor(limit || 0));
+  return {
+    horror_limit_track: renderHorrorTrack(cappedLimit, span),
+    horror_current_track: renderHorrorTrack(cappedCurrent, span)
+  };
+};
+
+const computeHorrorTrackFromValues = (values, overrideLimit = null, overrideCurrent = null) => {
+  const limit = Math.max(
+    0,
+    overrideLimit !== null ? overrideLimit : toInt(values.horror_dice_limit, 0)
+  );
+  const currentBase = Math.max(0, toInt(values.horror_dice_current, 0));
+  const current = Math.min(
+    limit,
+    overrideCurrent !== null ? overrideCurrent : currentBase
+  );
+  const poolMax = Math.max(0, toInt(values.dice_pool_max, 0));
+  const poolLimit = Math.max(limit, toInt(values.dice_pool_limit, 0));
+  return computeHorrorTrack(limit, current, poolMax, poolLimit);
+};
+
+const updateHorrorTrackLive = () => {
+  getAttrs(['horror_dice_limit', 'horror_dice_current', 'dice_pool_max', 'dice_pool_limit'], (values) => {
+    const updates = computeHorrorTrackFromValues(values);
+    setAttrs(updates, { silent: true });
+  });
+};
+
+const INJURY_RESULTS = [
+  {
+    min: 1,
+    max: 1,
+    key: 'heavy_blow',
+    label: 'Heavy Blow (1)',
+    difficulty: 'normal',
+    naturalDays: 7,
+    summary: 'Knocked prone; spend 1 die before acting next turn.'
+  },
+  {
+    min: 2,
+    max: 2,
+    key: 'slowed',
+    label: 'Slowed (2)',
+    difficulty: 'normal',
+    naturalDays: 7,
+    summary: 'Movement halved until healed.'
+  },
+  {
+    min: 3,
+    max: 3,
+    key: 'nasty_cut',
+    label: 'Nasty Cut (3)',
+    difficulty: 'normal',
+    naturalDays: 7,
+    summary: 'Dice pool limit cannot exceed 3 until healed.'
+  },
+  {
+    min: 4,
+    max: 4,
+    key: 'concussed',
+    label: 'Concussed (4)',
+    difficulty: 'normal',
+    naturalDays: 7,
+    summary: '-1 to Wits, Intuition, Knowledge, and Lore complex rolls.'
+  },
+  {
+    min: 5,
+    max: 5,
+    key: 'injured_arm',
+    label: 'Injured Arm (5)',
+    difficulty: 'normal',
+    naturalDays: 7,
+    summary: 'Arm actions become complex; -1 to Athletics, Agility, Ranged, and Melee complex rolls.'
+  },
+  {
+    min: 6,
+    max: 6,
+    key: 'injured_leg',
+    label: 'Injured Leg (6)',
+    difficulty: 'normal',
+    naturalDays: 7,
+    summary: 'Movement becomes complex; -1 to Athletics, Agility, and Melee complex rolls.'
+  },
+  {
+    min: 7,
+    max: 7,
+    key: 'loss_of_sense',
+    label: 'Loss of a Sense (7)',
+    difficulty: 'difficult',
+    naturalDays: 14,
+    summary: 'Lose one sense (1d3). Requires two successes to heal.'
+  },
+  {
+    min: 8,
+    max: 8,
+    key: 'severely_injured',
+    label: 'Severely Injured (8)',
+    difficulty: 'difficult',
+    naturalDays: 14,
+    summary: '-2 penalty to all complex rolls until healed.'
+  },
+  {
+    min: 9,
+    max: 9,
+    key: 'comatose',
+    label: 'Comatose (9)',
+    difficulty: 'difficult',
+    naturalDays: 14,
+    summary: 'Dice pool limit reduced to 0 until healed.'
+  },
+  {
+    min: 10,
+    max: 10,
+    key: 'dire',
+    label: 'Dire (10)',
+    difficulty: 'very_difficult',
+    naturalDays: 0,
+    summary: 'Dice pool limit 0; requires medical aid within an hour or death.'
+  },
+  {
+    min: 11,
+    max: 99,
+    key: 'dead',
+    label: 'Dead (11+)',
+    difficulty: 'very_difficult',
+    naturalDays: 0,
+    summary: 'Character dies unless extraordinary measures intervene.'
+  },
+  {
+    min: 0,
+    max: 0,
+    key: 'burned',
+    label: 'Burned',
+    difficulty: 'difficult',
+    naturalDays: 14,
+    summary: 'All complex actions at disadvantage; discard a die on natural 1s.'
+  },
+  {
+    min: 0,
+    max: 0,
+    key: 'choking',
+    label: 'Choking',
+    difficulty: 'difficult',
+    naturalDays: 0,
+    summary: 'Simple actions cost 2 dice; complex actions become difficult.'
+  },
+  {
+    min: 0,
+    max: 0,
+    key: 'sickened',
+    label: 'Sickened',
+    difficulty: 'normal',
+    naturalDays: 7,
+    summary: 'Roll 1d3 to determine maximum dice spent on complex actions.'
+  }
+];
+
+const INJURY_DATA_BY_KEY = INJURY_RESULTS.reduce((acc, entry) => {
+  acc[entry.key] = entry;
+  return acc;
+}, {});
+
+const mapInjuryRoll = (total) => INJURY_RESULTS.find((entry) => total >= entry.min && total <= entry.max);
+
+const createInjuryRow = (data, notes = '', rollTotal = '') => {
+  const labelMatch = data && data.label ? data.label.match(/\(([^)]+)\)/) : null;
+  const defaults = {
+    injury_roll_total: rollTotal !== '' ? rollTotal : labelMatch ? labelMatch[1] : '',
+    injury_table_result: data ? data.key : 'custom',
+    injury_name: data ? data.label : '',
+    injury_heal_difficulty: data ? data.difficulty : 'normal',
+    injury_recovery_days: data && typeof data.naturalDays === 'number' ? data.naturalDays : '',
+    injury_recovery_timer: '',
+    injury_medical_attempts: 0,
+    injury_penalty_active: 0,
+    injury_requires_insight: data && data.key === 'dire' ? 'on' : 0,
+    injury_flag_burned: data && data.key === 'burned' ? 'on' : 0,
+    injury_flag_choking: data && data.key === 'choking' ? 'on' : 0,
+    injury_flag_sickened: data && data.key === 'sickened' ? 'on' : 0,
+    injury_penalty: data ? data.summary : '',
+    injury_notes: notes
+  };
+  return buildRepeatingAttrs('injuries', defaults);
+};
+
+const recalcSocialSuccesses = () => {
+  getSectionIDs('socialactions', (ids) => {
+    if (!ids || !ids.length) {
+      setAttrs({ scene_social_successes: 0 }, { silent: true });
+      return;
+    }
+    const fields = ids.map((id) => `repeating_socialactions_${id}_social_action_result`);
+    getAttrs(fields, (values) => {
+      const successes = Object.values(values).filter((value) => value === 'success').length;
+      setAttrs({ scene_social_successes: successes }, { silent: true });
+    });
+  });
+};
+
+const updateSocialGoal = (difficulty) => {
+  const mapping = { easy: 1, average: 2, hard: 3 };
+  const resolved = Object.prototype.hasOwnProperty.call(mapping, difficulty) ? difficulty : 'easy';
+  const goal = mapping[resolved] || 0;
+  setAttrs({ scene_social_success_goal: goal }, { silent: true });
+};
+
+const VEHICLE_LABELS = {
+  operational: 'Operational',
+  lightly_damaged: 'Lightly Damaged',
+  heavily_damaged: 'Heavily Damaged',
+  destroyed: 'Destroyed'
+};
+
+on('sheet:opened', () => {
+  getAttrs(['scene_social_difficulty'], (values) => {
+    updateSocialGoal(values.scene_social_difficulty || '');
+  });
+  recalcSocialSuccesses();
+  updateHorrorTrackLive();
+});
+
+on('change:horror_dice_limit change:horror_dice_current change:dice_pool_max change:dice_pool_limit', updateHorrorTrackLive);
+
+on('clicked:act_refill_dice_pool', () => {
+  getAttrs(['dice_pool_limit', 'horror_dice_limit', 'dice_pool_max'], (values) => {
+    const updates = refillDicePoolState(values);
+    setAttrs(updates, { silent: true });
+  });
+});
+
+on('clicked:act_apply_damage', () => {
+  promptNumber('Damage suffered|1', (damage) => {
+    if (!damage) {
+      return;
+    }
+    getAttrs(
+      ['dice_pool_limit', 'dice_pool_current', 'horror_dice_current', 'horror_dice_limit', 'dice_pool_max'],
+      (values) => {
+        const updates = applyDiceLimitReduction(values, damage);
+        setAttrs(updates, { silent: true });
+      }
+    );
+  });
+});
+
+on('clicked:act_strain_self', () => {
+  getAttrs(['dice_pool_max', 'horror_dice_limit'], (values) => {
+    const max = Math.max(0, toInt(values.dice_pool_max, 0));
+    if (!max) {
+      return;
+    }
+    const horrorLimit = Math.max(0, toInt(values.horror_dice_limit, 0));
+    const notes = `Strained self on ${isoTimestamp()}. Roll Table 2-1 after turn or next complex action.`;
+    const updates = Object.assign(
+      {},
+      refillDicePoolState(
+        { dice_pool_limit: max, horror_dice_limit: horrorLimit, dice_pool_max: max },
+        max
+      ),
+      createInjuryRow({
+        key: 'custom',
+        label: 'Strain Injury Pending',
+        difficulty: 'normal',
+        naturalDays: '',
+        summary: 'Roll on Table 2-1 due to straining yourself.'
+      }, notes)
+    );
+    setAttrs(updates, { silent: true });
+  });
+});
+
+on('clicked:act_toggle_advantage', () => toggleCheckboxAttr('advantage_active'));
+on('clicked:act_toggle_disadvantage', () => toggleCheckboxAttr('disadvantage_active'));
+on('clicked:act_set_engaged', () => toggleCheckboxAttr('is_engaged'));
+
+on('clicked:act_clear_combat_flags', () => {
+  setAttrs(
+    {
+      advantage_active: 0,
+      disadvantage_active: 0,
+      is_engaged: 0,
+      cover_penalty: 0,
+      reaction_dice_reserved: 0,
+      same_task_attempted_turn: 0,
+      action_reserve_dice_flag: 0
+    },
+    { silent: true }
+  );
+});
+
+on('clicked:act_reset_turn_actions', () => {
+  setAttrs(
+    {
+      actions_turn_simple: 0,
+      actions_turn_complex: 0,
+      actions_turn_reactions: 0,
+      dice_spent_turn: 0,
+      same_task_attempted_turn: 0,
+      reaction_dice_reserved: 0
+    },
+    { silent: true }
+  );
+});
+
+on('clicked:act_reset_scene_actions', () => {
+  setAttrs(
+    {
+      actions_scene_simple: 0,
+      actions_scene_complex: 0,
+      actions_scene_reactions: 0,
+      dice_spent_scene: 0,
+      same_task_attempted_scene: 0,
+      action_restriction_noted: 0,
+      reaction_dice_reserved: 0
+    },
+    { silent: true }
+  );
+});
+
+on('clicked:act_log_simple_action', () => {
+  promptNumber('Dice spent on simple action (usually 1)|1', (spent) => {
+    getAttrs(['actions_turn_simple', 'actions_scene_simple', 'dice_spent_turn', 'dice_spent_scene'], (values) => {
+      const updates = {
+        actions_turn_simple: toInt(values.actions_turn_simple, 0) + 1,
+        actions_scene_simple: toInt(values.actions_scene_simple, 0) + 1,
+        dice_spent_turn: toInt(values.dice_spent_turn, 0) + spent,
+        dice_spent_scene: toInt(values.dice_spent_scene, 0) + spent
+      };
+      setAttrs(updates, { silent: true });
+    });
+  });
+});
+
+on('clicked:act_log_complex_action', () => {
+  promptNumber('Dice spent on complex action|3', (spent) => {
+    if (!spent) {
+      spent = 0;
+    }
+    getAttrs(['actions_turn_complex', 'actions_scene_complex', 'dice_spent_turn', 'dice_spent_scene'], (values) => {
+      const updates = {
+        actions_turn_complex: toInt(values.actions_turn_complex, 0) + 1,
+        actions_scene_complex: toInt(values.actions_scene_complex, 0) + 1,
+        dice_spent_turn: toInt(values.dice_spent_turn, 0) + spent,
+        dice_spent_scene: toInt(values.dice_spent_scene, 0) + spent
+      };
+      setAttrs(updates, { silent: true });
+    });
+  });
+});
+
+on('clicked:act_log_reaction', () => {
+  promptNumber('Dice spent on reaction|1', (spent) => {
+    getAttrs(
+      ['actions_turn_reactions', 'actions_scene_reactions', 'dice_spent_turn', 'dice_spent_scene', 'scene_reactions_logged', 'reaction_dice_reserved'],
+      (values) => {
+        const reserved = toInt(values.reaction_dice_reserved, 0);
+        const updates = {
+          actions_turn_reactions: toInt(values.actions_turn_reactions, 0) + 1,
+          actions_scene_reactions: toInt(values.actions_scene_reactions, 0) + 1,
+          dice_spent_turn: toInt(values.dice_spent_turn, 0) + spent,
+          dice_spent_scene: toInt(values.dice_spent_scene, 0) + spent,
+          scene_reactions_logged: toInt(values.scene_reactions_logged, 0) + 1,
+          reaction_dice_reserved: Math.max(0, reserved - spent)
+        };
+        setAttrs(updates, { silent: true });
+      }
+    );
+  });
+});
+
+on('clicked:act_reset_scene', () => {
+  getAttrs(['scene_social_difficulty'], (values) => {
+    const difficulty = values.scene_social_difficulty || 'easy';
+    const resets = {
+      scene_round: 0,
+      scene_turn: '',
+      scene_social_successes: 0,
+      scene_reactions_logged: 0,
+      scene_advantage_pool: 0,
+      horror_ones_this_scene: 0,
+      introspection_attempts: 0,
+      counseling_attempts: 0,
+      actions_scene_simple: 0,
+      actions_scene_complex: 0,
+      actions_scene_reactions: 0,
+      dice_spent_scene: 0,
+      same_task_attempted_scene: 0
+    };
+    setAttrs(resets, { silent: true });
+    updateSocialGoal(difficulty);
+  });
+});
+
+on('clicked:act_advance_round', () => {
+  getAttrs(['scene_round'], (values) => {
+    const round = toInt(values.scene_round, 0) + 1;
+    setAttrs({ scene_round: round }, { silent: true });
+  });
+});
+
+on('change:scene_social_difficulty', (eventInfo) => {
+  updateSocialGoal(eventInfo.newValue || '');
+});
+
+on('clicked:act_add_social_action', () => {
+  const row = buildRepeatingAttrs('socialactions', {
+    social_action_actor: '',
+    social_action_target: '',
+    social_action_skill: '',
+    social_action_result: 'pending',
+    social_action_notes: ''
+  });
+  setAttrs(row, { silent: true }, recalcSocialSuccesses);
+});
+
+on('change:repeating_socialactions:social_action_result', recalcSocialSuccesses);
+on('remove:repeating_socialactions', recalcSocialSuccesses);
+
+on('clicked:act_add_vehicle', () => {
+  const timestamp = isoTimestamp();
+  const row = buildRepeatingAttrs('vehicles', {
+    vehicle_name: '',
+    vehicle_condition: 'operational',
+    vehicle_last_check: timestamp ? `Logged ${timestamp}` : '',
+    vehicle_notes: ''
+  });
+  setAttrs(row, { silent: true });
+});
+
+on('change:repeating_vehicles:vehicle_condition', (eventInfo) => {
+  const { sourceAttribute, newValue } = eventInfo;
+  const idMatch = sourceAttribute.match(/repeating_vehicles_([^_]+)_vehicle_condition/);
+  if (!idMatch) {
+    return;
+  }
+  const id = idMatch[1];
+  const label = VEHICLE_LABELS[newValue] || newValue;
+  const updates = {
+    [`repeating_vehicles_${id}_vehicle_last_check`]: label ? `${label} as of ${isoTimestamp()}` : isoTimestamp()
+  };
+  setAttrs(updates, { silent: true });
+});
+
+on('clicked:act_add_injury', () => {
+  const row = buildRepeatingAttrs('injuries', {
+    injury_roll_total: '',
+    injury_table_result: 'custom',
+    injury_name: '',
+    injury_heal_difficulty: 'normal',
+    injury_recovery_days: '',
+    injury_recovery_timer: '',
+    injury_medical_attempts: 0,
+    injury_penalty_active: 0,
+    injury_requires_insight: 0,
+    injury_flag_burned: 0,
+    injury_flag_choking: 0,
+    injury_flag_sickened: 0,
+    injury_penalty: '',
+    injury_notes: ''
+  });
+  setAttrs(row, { silent: true });
+});
+
+on('clicked:act_roll_injury', () => {
+  getSectionIDs('injuries', (ids) => {
+    const modifier = Array.isArray(ids) ? ids.length : 0;
+    startRoll(`[[1d6+${modifier}]]`, (results) => {
+      const total = toInt(results.results.total.result, 0);
+      finishRoll(results.rollId, {});
+      const data = mapInjuryRoll(total);
+      const summary = data ? data.summary : '';
+      const notes = `Rolled ${total} on Table 2-1${modifier ? ` (existing injuries +${modifier})` : ''}.`;
+      const row = createInjuryRow(
+        data || {
+          key: 'custom',
+          label: `Custom Result (${total})`,
+          difficulty: 'normal',
+          naturalDays: '',
+          summary: summary
+        },
+        notes,
+        total
+      );
+      setAttrs(row, { silent: true });
+    });
+  });
+});
+
+on('change:repeating_injuries:injury_table_result', (eventInfo) => {
+  const key = eventInfo.newValue;
+  const data = INJURY_DATA_BY_KEY[key];
+  if (!data) {
+    return;
+  }
+  const idMatch = eventInfo.sourceAttribute.match(/repeating_injuries_([^_]+)_injury_table_result/);
+  if (!idMatch) {
+    return;
+  }
+  const id = idMatch[1];
+  const updates = {
+    [`repeating_injuries_${id}_injury_heal_difficulty`]: data.difficulty,
+    [`repeating_injuries_${id}_injury_penalty`]: data.summary,
+    [`repeating_injuries_${id}_injury_requires_insight`]: 0,
+    [`repeating_injuries_${id}_injury_flag_burned`]: 0,
+    [`repeating_injuries_${id}_injury_flag_choking`]: 0,
+    [`repeating_injuries_${id}_injury_flag_sickened`]: 0
+  };
+  updates[`repeating_injuries_${id}_injury_recovery_days`] = typeof data.naturalDays === 'number' ? data.naturalDays : '';
+  if (data.key === 'dire') {
+    updates[`repeating_injuries_${id}_injury_requires_insight`] = 'on';
+  }
+  if (data.key === 'burned' || data.key === 'choking' || data.key === 'sickened') {
+    updates[`repeating_injuries_${id}_injury_flag_${data.key}`] = 'on';
+  }
+  setAttrs(updates, { silent: true });
+});
+
+on('clicked:act_roll_trauma', () => {
+  getAttrs(['trauma_modifier_session', 'trauma_duration_scope', 'horror_ones_this_scene'], (values) => {
+    const sessionModifier = toInt(values.trauma_modifier_session, 0);
+    const duration = values.trauma_duration_scope || 'scene';
+    promptNumber('Horror dice showing 1|1', (ones) => {
+      startRoll(`[[1d6+${ones}+${sessionModifier}]]`, (results) => {
+        const total = toInt(results.results.total.result, 0);
+        finishRoll(results.rollId, {});
+        const traumaInfo = mapTraumaResult(total);
+        const newOnes = toInt(values.horror_ones_this_scene, 0) + ones;
+        const updates = {
+          trauma_roll_total: total,
+          trauma_last_result: traumaInfo.label,
+          horror_ones_this_scene: newOnes,
+          pending_trauma_check: 0,
+          pending_trauma_notes: ''
+        };
+        if (traumaInfo.incrementSession) {
+          updates.trauma_modifier_session = sessionModifier + 1;
+        }
+        const traumaRow = buildRepeatingAttrs('trauma', {
+          trauma_entry_roll: total,
+          trauma_entry_result: traumaInfo.key,
+          trauma_entry_duration: duration,
+          trauma_entry_insight: 0,
+          trauma_entry_personality: 0,
+          trauma_entry_notes: `Manual trauma roll (${ones} horror die result(s) of 1).`
+        });
+        setAttrs(Object.assign({}, updates, traumaRow), { silent: true });
+      });
+    });
+  });
+});
+
+on('clicked:act_add_weapon', () => {
+  const row = buildRepeatingAttrs('weapons', {
+    weapon_name: '',
+    weapon_type: 'melee',
+    weapon_damage: '',
+    weapon_injury_rating: '',
+    weapon_range: '',
+    weapon_cover_penalty: 0,
+    weapon_skill_target: '@{skill_melee_combat}',
+    weapon_reaction_skill: '@{skill_agility}',
+    weapon_requires_engaged: 0,
+    weapon_special: ''
+  });
+  setAttrs(row, { silent: true });
+});
+
+on('clicked:act_add_knack', () => {
+  const row = buildRepeatingAttrs('knacks', {
+    knack_tier: 'tier1',
+    knack_name: '',
+    knack_effect: ''
+  });
+  setAttrs(row, { silent: true });
+});
+
+on('clicked:act_reset_skill_modifiers', () => {
+  const noteFields = [
+    'skill_agility_notes',
+    'skill_athletics_notes',
+    'skill_wits_notes',
+    'skill_presence_notes',
+    'skill_intuition_notes',
+    'skill_knowledge_notes',
+    'skill_resolve_notes',
+    'skill_melee_combat_notes',
+    'skill_ranged_combat_notes',
+    'skill_lore_notes'
+  ];
+  const updates = noteFields.reduce((acc, field) => {
+    acc[field] = '';
+    return acc;
+  }, {});
+  setAttrs(updates, { silent: true });
+});
+
+on('clicked:act_add_clue', () => {
+  const timestamp = isoTimestamp();
+  getAttrs(['clue_log'], (values) => {
+    const prior = values.clue_log ? values.clue_log.trim() : '';
+    const entry = timestamp ? `[${timestamp}] ` : '';
+    const combined = prior ? `${prior}\n${entry}` : entry;
+    setAttrs({ clue_log: combined.trim() }, { silent: true });
+  });
+});
+
+on('clicked:act_reset_notes', () => {
+  setAttrs(
+    {
+      clue_log: '',
+      contacts_log: '',
+      personal_journal: ''
+    },
+    { silent: true }
+  );
+});
+
+const mapTraumaResult = (total) => {
+  if (total <= 2) {
+    return { key: 'subtle_strangeness', label: 'Subtle Strangeness (1–2)', incrementSession: false };
+  }
+  if (total === 3) {
+    return { key: 'shocked', label: 'Shocked (3)', incrementSession: false };
+  }
+  if (total === 4) {
+    return { key: 'stunned', label: 'Stunned (4)', incrementSession: false };
+  }
+  if (total >= 5 && total <= 7) {
+    return { key: 'overcome', label: 'Overcome by Horror (5–7)', incrementSession: false };
+  }
+  if (total >= 8 && total <= 10) {
+    return { key: 'mind_undone', label: 'Mind Undone (8–10)', incrementSession: true };
+  }
+  return { key: 'lost_forever', label: 'Lost Forever (11+)', incrementSession: false };
+};
+
+const adjustHorrorLimit = (values, newLimit) => {
+  const currentDice = Math.max(0, toInt(values.horror_dice_current, 0));
+  const trimmedCurrent = Math.min(currentDice, newLimit);
+  const updates = { horror_dice_limit: newLimit };
+  if (trimmedCurrent !== currentDice) {
+    updates.horror_dice_current = trimmedCurrent;
+  }
+  const poolMax = Math.max(0, toInt(values.dice_pool_max, 0));
+  const poolLimit = Math.max(newLimit, toInt(values.dice_pool_limit, 0));
+  return Object.assign({}, updates, computeHorrorTrack(newLimit, trimmedCurrent, poolMax, poolLimit));
+};
+
+const logHorrorEvent = (type, amount, total, notes) =>
+  buildRepeatingAttrs('horrorlog', {
+    horror_event_type: type,
+    horror_event_amount: amount,
+    horror_event_total: total,
+    horror_event_notes: notes,
+    horror_event_timestamp: isoTimestamp()
+  });
+
+const logInsightSpend = (type, amount, notes) =>
+  buildRepeatingAttrs('insightlog', {
+    insight_log_type: type,
+    insight_log_amount: amount,
+    insight_log_notes: notes,
+    insight_log_timestamp: isoTimestamp()
+  });
+
+on('clicked:act_apply_horror_gain', () => {
+  getAttrs([
+    'horror_gain_amount',
+    'horror_gain_reason',
+    'horror_dice_limit',
+    'dice_pool_max',
+    'dice_pool_limit',
+    'horror_dice_current'
+  ], (values) => {
+    const amount = Math.max(0, toInt(values.horror_gain_amount, 1));
+    if (!amount) {
+      return;
+    }
+    const limit = toInt(values.horror_dice_limit, 0);
+    const max = Math.max(0, toInt(values.dice_pool_max, 0));
+    let updatedLimit = limit + amount;
+    if (max > 0) {
+      updatedLimit = Math.min(updatedLimit, max);
+    }
+    const notes = values.horror_gain_reason || '';
+    const updates = Object.assign(
+      {},
+      adjustHorrorLimit(values, updatedLimit),
+      logHorrorEvent('gain', amount, updatedLimit, notes)
+    );
+    setAttrs(updates, { silent: true });
+  });
+});
+
+on('clicked:act_reduce_horror', () => {
+  getAttrs([
+    'horror_reduce_amount',
+    'horror_reduce_notes',
+    'horror_dice_limit',
+    'horror_dice_current',
+    'dice_pool_max',
+    'dice_pool_limit'
+  ], (values) => {
+    const amount = Math.max(0, toInt(values.horror_reduce_amount, 1));
+    if (!amount) {
+      return;
+    }
+    const limit = toInt(values.horror_dice_limit, 0);
+    const newLimit = Math.max(0, limit - amount);
+    const notes = values.horror_reduce_notes || '';
+    const updates = Object.assign(
+      {},
+      adjustHorrorLimit(values, newLimit),
+      logHorrorEvent('reduction', -amount, newLimit, notes)
+    );
+    setAttrs(updates, { silent: true });
+  });
+});
+
+on('clicked:act_apply_week_rest', () => {
+  getAttrs(
+    ['horror_dice_limit', 'horror_dice_current', 'horror_rest_notes', 'dice_pool_max', 'dice_pool_limit'],
+    (values) => {
+      const previousLimit = toInt(values.horror_dice_limit, 0);
+      const notes = values.horror_rest_notes || '';
+      const updates = Object.assign(
+        {},
+        computeHorrorTrackFromValues(values, 0, 0),
+        {
+          horror_dice_limit: 0,
+          horror_dice_current: 0,
+          horror_ones_this_scene: 0
+        },
+        logHorrorEvent('rest', previousLimit ? -previousLimit : 0, 0, notes)
+      );
+      setAttrs(updates, { silent: true });
+    }
+  );
+});
+
+on('clicked:act_apply_introspection', () => {
+  getAttrs([
+    'introspection_successes',
+    'introspection_notes',
+    'horror_dice_limit',
+    'horror_dice_current',
+    'dice_pool_max',
+    'dice_pool_limit',
+    'introspection_attempts'
+  ], (values) => {
+    const successes = Math.max(0, toInt(values.introspection_successes, 1));
+    if (!successes) {
+      return;
+    }
+    const limit = toInt(values.horror_dice_limit, 0);
+    const newLimit = Math.max(0, limit - successes);
+    const attempts = toInt(values.introspection_attempts, 0) + 1;
+    const notes = values.introspection_notes || '';
+    const updates = Object.assign(
+      {
+        introspection_attempts: attempts
+      },
+      adjustHorrorLimit(values, newLimit),
+      logHorrorEvent('introspection', -successes, newLimit, notes)
+    );
+    setAttrs(updates, { silent: true });
+  });
+});
+
+on('clicked:act_apply_counseling', () => {
+  getAttrs([
+    'counseling_successes',
+    'counseling_notes',
+    'counseling_target',
+    'horror_dice_limit',
+    'horror_dice_current',
+    'dice_pool_max',
+    'dice_pool_limit',
+    'counseling_attempts'
+  ], (values) => {
+    const successes = Math.max(0, toInt(values.counseling_successes, 1));
+    if (!successes) {
+      return;
+    }
+    const limit = toInt(values.horror_dice_limit, 0);
+    const newLimit = Math.max(0, limit - successes);
+    const attempts = toInt(values.counseling_attempts, 0) + 1;
+    const partner = values.counseling_target ? ` (${values.counseling_target})` : '';
+    const notes = `${values.counseling_notes || ''}${partner}`.trim();
+    const updates = Object.assign(
+      {
+        counseling_attempts: attempts
+      },
+      adjustHorrorLimit(values, newLimit),
+      logHorrorEvent('counseling', -successes, newLimit, notes)
+    );
+    setAttrs(updates, { silent: true });
+  });
+});
+
+on('clicked:act_log_horror_die', () => {
+  getAttrs([
+    'horror_die_face',
+    'horror_die_ones',
+    'horror_die_notes',
+    'trauma_modifier_session',
+    'horror_ones_this_scene',
+    'trauma_duration_scope',
+    'horror_dice_limit'
+  ], (values) => {
+    const face = toInt(values.horror_die_face, 1);
+    const onesReported = Math.max(1, toInt(values.horror_die_ones, 1));
+    const notesBase = values.horror_die_notes || '';
+    const detail = `Face ${face}${face === 1 ? `, ones ${onesReported}` : ''}`;
+    const notes = notesBase ? `${notesBase} (${detail})` : detail;
+    const limit = toInt(values.horror_dice_limit, 0);
+    const baseUpdates = logHorrorEvent('die', face, limit, notes);
+
+    if (face !== 1) {
+      setAttrs(baseUpdates, { silent: true });
+      return;
+    }
+
+    const sessionModifier = toInt(values.trauma_modifier_session, 0);
+    const onesThisScene = toInt(values.horror_ones_this_scene, 0);
+    const duration = values.trauma_duration_scope || 'scene';
+
+    startRoll(`[[1d6+${onesReported}+${sessionModifier}]]`, (results) => {
+      const total = toInt(results.results.total.result, 0);
+      finishRoll(results.rollId, {});
+      const traumaInfo = mapTraumaResult(total);
+      const newOnes = onesThisScene + onesReported;
+      const updates = Object.assign({}, baseUpdates, {
+        horror_ones_this_scene: newOnes,
+        trauma_roll_total: total,
+        trauma_last_result: traumaInfo.label,
+        pending_trauma_check: 0,
+        pending_trauma_notes: ''
+      });
+
+      if (traumaInfo.incrementSession) {
+        updates.trauma_modifier_session = sessionModifier + 1;
+      }
+
+      const traumaRow = buildRepeatingAttrs('trauma', {
+        trauma_entry_roll: total,
+        trauma_entry_result: traumaInfo.key,
+        trauma_entry_duration: duration,
+        trauma_entry_insight: 0,
+        trauma_entry_personality: 0,
+        trauma_entry_notes: notes
+      });
+
+      setAttrs(Object.assign({}, updates, traumaRow), { silent: true });
+    });
+  });
+});
+
+const spendInsight = (cost, type, notes, options = {}) => {
+  const { setAdvantage = false, adjustSpent = true } = options;
+  getAttrs(['insight_current', 'insight_spent_session', 'insight_limit', 'advantage_active'], (values) => {
+    const current = Math.max(0, toInt(values.insight_current, 0));
+    const spent = Math.max(0, toInt(values.insight_spent_session, 0));
+    const limit = Math.max(0, toInt(values.insight_limit, 0));
+    const actualCost = Math.max(0, cost);
+    const newCurrent = Math.max(0, current - actualCost);
+    const updates = Object.assign(
+      {
+        insight_current: newCurrent
+      },
+      logInsightSpend(type, actualCost, notes)
+    );
+
+    if (adjustSpent) {
+      updates.insight_spent_session = spent + actualCost;
+    }
+
+    if (setAdvantage) {
+      updates.advantage_active = 1;
+    }
+
+    if (limit && newCurrent > limit) {
+      updates.insight_current = limit;
+    }
+
+    setAttrs(updates, { silent: true });
+  });
+};
+
+on('clicked:act_spend_insight_success', () => {
+  getAttrs(['insight_success_notes'], (values) => {
+    const notes = values.insight_success_notes || 'Bonus success applied.';
+    spendInsight(1, 'bonus_success', notes);
+    setAttrs({ insight_success_notes: '' }, { silent: true });
+  });
+});
+
+on('clicked:act_spend_insight_advantage', () => {
+  getAttrs(['insight_advantage_notes'], (values) => {
+    const notes = values.insight_advantage_notes || 'Advantage granted.';
+    spendInsight(1, 'advantage', notes, { setAdvantage: true });
+    setAttrs({ insight_advantage_notes: '' }, { silent: true });
+  });
+});
+
+on('clicked:act_spend_insight_clue', () => {
+  getAttrs(['insight_clue_cost', 'insight_clue_notes'], (values) => {
+    const cost = Math.max(1, toInt(values.insight_clue_cost, 1));
+    const notes = values.insight_clue_notes || 'Clue requested.';
+    spendInsight(cost, 'clue', notes);
+  });
+});
+
+on('clicked:act_spend_insight_edit', () => {
+  getAttrs(['insight_edit_cost', 'insight_edit_notes'], (values) => {
+    const cost = Math.max(1, toInt(values.insight_edit_cost, 1));
+    const notes = values.insight_edit_notes || 'Narrative edit applied.';
+    spendInsight(cost, 'narrative_edit', notes);
+  });
+});
+
+on('clicked:act_spend_insight_survival', () => {
+  getAttrs(['insight_survival_notes', 'insight_limit', 'insight_current'], (values) => {
+    const notes = values.insight_survival_notes || 'Insight limit reduced to avoid death.';
+    const limit = Math.max(0, toInt(values.insight_limit, 0));
+    const current = Math.max(0, toInt(values.insight_current, 0));
+    const newLimit = Math.max(0, limit - 2);
+    const updates = Object.assign(
+      {
+        insight_limit: newLimit
+      },
+      logInsightSpend('survival', 2, notes)
+    );
+    if (current > newLimit) {
+      updates.insight_current = newLimit;
+    }
+    setAttrs(updates, { silent: true });
+  });
+});
+</script>
