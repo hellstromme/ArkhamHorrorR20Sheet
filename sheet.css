@@ -1,0 +1,15 @@
+/*
+  Arkham Horror Roll20 Character Sheet Styles
+  Initial scaffold generated to establish project structure.
+  Detailed styling will be implemented in future iterations.
+*/
+
+.sheet-wrapper {
+  padding: 1rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.sheet-wrapper h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
