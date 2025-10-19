@@ -1,0 +1,733 @@
+/*
+  Arkham Horror Roll20 Character Sheet Styles
+  Expanded scaffold covering primary layout elements.
+*/
+
+.sheet-wrapper {
+  padding: 1rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #1f1f1f;
+  background-color: #f4f4f4;
+}
+
+.sheet-tab-toggle {
+  display: none;
+}
+
+.sheet-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.sheet-tabs label {
+  padding: 0.4rem 0.8rem;
+  background-color: #d5d5d5;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sheet-tabs label:hover {
+  background-color: #c0c0c0;
+}
+
+.sheet-tab-content {
+  display: none;
+}
+
+#sheet-tab-overview:checked ~ .sheet-tab-overview,
+#sheet-tab-combat:checked ~ .sheet-tab-combat,
+#sheet-tab-status:checked ~ .sheet-tab-status,
+#sheet-tab-scenes:checked ~ .sheet-tab-scenes,
+#sheet-tab-notes:checked ~ .sheet-tab-notes {
+  display: block;
+}
+
+#sheet-tab-overview:checked ~ .sheet-tabs label[for="sheet-tab-overview"],
+#sheet-tab-combat:checked ~ .sheet-tabs label[for="sheet-tab-combat"],
+#sheet-tab-status:checked ~ .sheet-tabs label[for="sheet-tab-status"],
+#sheet-tab-scenes:checked ~ .sheet-tabs label[for="sheet-tab-scenes"],
+#sheet-tab-notes:checked ~ .sheet-tabs label[for="sheet-tab-notes"] {
+  background-color: #334155;
+  color: #fff;
+}
+
+.sheet-header h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.sheet-section {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background-color: #fafafa;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.sheet-section h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0f172a;
+  border-bottom: 2px solid #94a3b8;
+  padding-bottom: 0.35rem;
+}
+
+.sheet-section h3 {
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1f2937;
+}
+
+.sheet-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sheet-helper-text {
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.sheet-field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem 1rem;
+}
+
+.sheet-field-grid label,
+.sheet-full-width {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.sheet-field-grid input,
+.sheet-field-grid select,
+.sheet-full-width textarea,
+.sheet-field-grid textarea {
+  margin-top: 0.25rem;
+  padding: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.sheet-pool-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.sheet-pool-panel {
+  background-color: #fff;
+  border: 1px solid #d7d7d7;
+  border-radius: 6px;
+  padding: 0.75rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.sheet-pool-summary {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sheet-pool-summary div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.85rem;
+}
+
+.sheet-pool-label {
+  font-weight: 600;
+  color: #334155;
+}
+
+.sheet-pool-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet-skill-pips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: space-between;
+}
+
+.sheet-skill-pip {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 92px;
+  min-width: 82px;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #fdfdfd 0%, #f3f4f6 100%);
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.sheet-skill-pip:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+}
+
+.sheet-skill-pip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.sheet-skill-pip-circle {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  border: 2px solid #c7cad8;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e5e7eb 75%);
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.12);
+  transition: all 0.2s ease-in-out;
+}
+
+.sheet-skill-pip-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #374151;
+}
+
+.sheet-skill-pip-name {
+  font-weight: 600;
+}
+
+.sheet-skill-pip-target {
+  font-size: 0.6rem;
+  color: #6b7280;
+}
+
+.sheet-skill-pip input:checked + .sheet-skill-pip-circle {
+  background: radial-gradient(circle at 40% 40%, #fde68a 0%, #f97316 60%, #b45309 100%);
+  border-color: #b45309;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.35);
+}
+
+.sheet-skill-pip input:checked + .sheet-skill-pip-circle + .sheet-skill-pip-text {
+  color: #9a3412;
+}
+
+.sheet-skill-pip input:focus-visible + .sheet-skill-pip-circle {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.sheet-skill-pip input:focus-visible + .sheet-skill-pip-circle + .sheet-skill-pip-text {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.sheet-horror-panel {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border-color: #111827;
+}
+
+.sheet-horror-track {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.45);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sheet-horror-track-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sheet-track-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.75);
+}
+
+.sheet-track-indicator {
+  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.35em;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  background: rgba(15, 23, 42, 0.55);
+  color: rgba(226, 232, 240, 0.9);
+  min-width: 9ch;
+  text-align: center;
+}
+
+.sheet-track-indicator--limit {
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.35);
+}
+
+.sheet-track-indicator--current {
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.6);
+  box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.4);
+}
+
+.sheet-horror-panel .sheet-pool-label {
+  color: #facc15;
+}
+
+.sheet-horror-panel .sheet-pool-value {
+  color: #fefce8;
+}
+
+.sheet-horror-panel textarea {
+  margin-top: 0.5rem;
+  background-color: rgba(17, 24, 39, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f9fafb;
+  width: 100%;
+  padding: 0.35rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.sheet-trauma-prompt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid rgba(249, 115, 22, 0.75);
+  background: linear-gradient(135deg, rgba(253, 230, 138, 0.35), rgba(249, 115, 22, 0.15));
+  color: #b45309;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+}
+
+.sheet-trauma-prompt input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #dc2626;
+}
+
+.sheet-trauma-prompt:focus-within {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+.sheet-section table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.sheet-quick-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sheet-quick-actions button {
+  background-color: #1d4ed8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sheet-quick-actions button:hover {
+  background-color: #1e3a8a;
+}
+
+.sheet-section table th,
+.sheet-section table td {
+  border: 1px solid #d5d5d5;
+  padding: 0.35rem;
+  text-align: left;
+}
+
+.sheet-section table th {
+  background-color: #eaeaea;
+}
+
+.sheet-section table select,
+.sheet-section table input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sheet-skill-roll {
+  text-align: center;
+}
+
+.sheet-roll-button {
+  width: 100%;
+  background-color: #047857;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.3rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sheet-roll-button:hover {
+  background-color: #036149;
+}
+
+button.sheet-roll-button::before {
+  content: none;
+}
+
+.sheet-repeating-row {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sheet-checkbox-field {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  gap: 0.25rem;
+}
+
+.sheet-checkbox-field input[type="checkbox"] {
+  align-self: flex-start;
+}
+
+.sheet-repeating-row input,
+.sheet-repeating-row select,
+.sheet-repeating-row textarea {
+  padding: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.sheet-weapons .sheet-repeating-row {
+  grid-template-columns: 1.1fr 0.7fr 0.6fr 0.6fr 0.6fr 0.5fr 0.9fr 0.9fr 0.7fr 1.4fr;
+  align-items: center;
+}
+
+.sheet-weapon-notes {
+  grid-column: 1 / -1;
+  min-height: 3rem;
+  resize: vertical;
+}
+
+.sheet-weapon-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sheet-weapon-buttons .sheet-roll-button {
+  flex: 1 1 140px;
+}
+
+.sheet-weapon-engaged {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.sheet-action-metrics {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.sheet-action-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sheet-action-flags label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.sheet-knacks .sheet-repeating-row {
+  grid-template-columns: 0.5fr 1fr 1.2fr;
+}
+
+.sheet-trauma-tracker {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sheet-reference-card {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.sheet-reference-card summary {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.sheet-reference-card[open] summary {
+  margin-bottom: 0.75rem;
+}
+
+.sheet-reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.sheet-reference-table th,
+.sheet-reference-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.4rem;
+  text-align: left;
+}
+
+.sheet-reference-table tbody tr:nth-child(even) {
+  background-color: #f3f4f6;
+}
+
+.sheet-trauma-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem 0.75rem;
+}
+
+.sheet-trauma-row textarea {
+  grid-column: 1 / -1;
+  min-height: 3rem;
+  resize: vertical;
+}
+
+.sheet-injury-row {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sheet-injury-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem 0.75rem;
+}
+
+.sheet-injury-flags {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem 0.75rem;
+}
+
+.sheet-injury-flags textarea {
+  min-height: 3.5rem;
+  resize: vertical;
+}
+
+.sheet-social-actions .sheet-repeating-row {
+  grid-template-columns: 1fr 1fr 0.8fr 0.8fr 1.2fr;
+}
+
+.sheet-vehicles .sheet-repeating-row {
+  grid-template-columns: 1fr 0.8fr 1fr 1.2fr;
+}
+
+.sheet-full-width textarea {
+  min-height: 4rem;
+  resize: vertical;
+}
+
+.sheet-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem 1rem;
+}
+
+.sheet-notes-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.sheet-notes-grid textarea {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  min-height: 6rem;
+}
+
+.sheet-horror-forms,
+.sheet-insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.sheet-horror-card,
+.sheet-insight-card {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.sheet-inline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+  align-items: end;
+}
+
+.sheet-inline-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  gap: 0.25rem;
+}
+
+.sheet-inline-grid input,
+.sheet-inline-grid select {
+  padding: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.sheet-inline-grid button {
+  align-self: stretch;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.sheet-primary-action {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.sheet-primary-action:hover {
+  background-color: #1d4ed8;
+}
+
+.sheet-secondary-action {
+  background-color: #10b981;
+  color: #0b3c2f;
+}
+
+.sheet-secondary-action:hover {
+  background-color: #059669;
+  color: #fff;
+}
+
+.sheet-danger-action {
+  background-color: #dc2626;
+  color: #fff;
+}
+
+.sheet-danger-action:hover {
+  background-color: #b91c1c;
+}
+
+.sheet-value-readout {
+  display: inline-block;
+  padding: 0.35rem 0.5rem;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.sheet-horrorlog-row,
+.sheet-insightlog-row {
+  grid-template-columns: 0.8fr 0.5fr 0.6fr 1.2fr 1fr;
+  align-items: center;
+}
+
+.sheet-horrorlog-row input,
+.sheet-insightlog-row input,
+.sheet-horrorlog-row select,
+.sheet-insightlog-row select {
+  width: 100%;
+}
+
+.sheet-horrorlog-row input[type="text"],
+.sheet-insightlog-row input[type="text"] {
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .sheet-repeating-row {
+    grid-template-columns: 1fr;
+  }
+
+  .sheet-quick-actions {
+    width: 100%;
+  }
+
+  .sheet-weapon-buttons {
+    flex-direction: column;
+  }
+
+  .sheet-skill-pips {
+    justify-content: flex-start;
+  }
+
+  .sheet-skill-pip {
+    flex: 1 1 calc(50% - 0.4rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .sheet-skill-pip {
+    flex: 1 1 100%;
+  }
+}
