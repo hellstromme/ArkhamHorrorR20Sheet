@@ -73,6 +73,7 @@
 
 .sheet-repeating-row {
   display: grid;
+  grid-template-columns: 1.3fr 1.5fr 1fr 1fr;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
