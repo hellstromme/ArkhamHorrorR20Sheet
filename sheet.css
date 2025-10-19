@@ -79,9 +79,30 @@
 }
 
 .sheet-repeating-row input,
-.sheet-repeating-row select {
+.sheet-repeating-row select,
+.sheet-repeating-row textarea {
   padding: 0.35rem;
   font-size: 0.85rem;
+}
+
+.sheet-weapons .sheet-repeating-row {
+  grid-template-columns: 1.2fr 0.6fr 0.6fr 0.8fr 1.2fr;
+}
+
+.sheet-knacks .sheet-repeating-row {
+  grid-template-columns: 0.5fr 1fr 1.2fr;
+}
+
+.sheet-injuries .sheet-repeating-row {
+  grid-template-columns: 1.2fr 1.2fr 0.8fr 1fr;
+}
+
+.sheet-social-actions .sheet-repeating-row {
+  grid-template-columns: 1fr 1fr 0.8fr 0.8fr 1.2fr;
+}
+
+.sheet-vehicles .sheet-repeating-row {
+  grid-template-columns: 1fr 0.8fr 1fr 1.2fr;
 }
 
 .sheet-full-width textarea {

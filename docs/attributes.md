@@ -66,6 +66,24 @@ Each skill stores the minimum die result needed for success (2–6). Notes field
 | `trauma_modifier_session` | number | Persistent modifier applied to trauma rolls for the session. |
 | `trauma_notes` | text | Narrative notes and ongoing effects. |
 
+## Knacks (Repeating Section: `repeating_knacks`)
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `knack_tier` | select | Tier assignment (`tier1`–`tier4`). |
+| `knack_name` | text | Knack title. |
+| `knack_effect` | textarea | Description of benefits or triggers. |
+
+## Weapons (Repeating Section: `repeating_weapons`)
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `weapon_name` | text | Weapon or attack name. |
+| `weapon_damage` | text | Base damage expression. |
+| `weapon_range` | text | Effective range band. |
+| `weapon_issue_rating` | text | Reliability/issue rating notation. |
+| `weapon_special` | textarea | Special rules, ammunition tracking, or notes. |
+
 ## Injuries (Repeating Section: `repeating_injuries`)
 
 | Attribute | Type | Description |
@@ -74,6 +92,25 @@ Each skill stores the minimum die result needed for success (2–6). Notes field
 | `injury_penalty` | text | Mechanical penalty reminder. |
 | `injury_heal_difficulty` | select | Healing difficulty (`normal`, `difficult`, `very_difficult`). |
 | `injury_recovery_timer` | text | Natural recovery timer or notes. |
+
+## Social Scene Actions (Repeating Section: `repeating_socialactions`)
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `social_action_actor` | text | Investigator leading the action. |
+| `social_action_target` | text | NPC or faction targeted. |
+| `social_action_skill` | text | Skill used to attempt the action. |
+| `social_action_result` | select | Outcome tracking (`pending`, `success`, `reaction_negated`, `fail`). |
+| `social_action_notes` | textarea | Consequences, insight spend, or modifiers. |
+
+## Vehicle Log (Repeating Section: `repeating_vehicles`)
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `vehicle_name` | text | Vehicle identifier. |
+| `vehicle_condition` | select | Condition state (`operational`, `lightly_damaged`, `heavily_damaged`, `destroyed`). |
+| `vehicle_last_check` | text | Last maintenance, repair, or chase note. |
+| `vehicle_notes` | textarea | Additional context, repairs needed, or complications. |
 
 ## Scene Tracking
 

@@ -212,6 +212,70 @@
     </table>
   </section>
 
+  <section class="sheet-section sheet-knacks">
+    <h2>Knacks</h2>
+    <fieldset class="repeating_knacks">
+      <div class="sheet-repeating-row sheet-knacks-row">
+        <select name="attr_knack_tier">
+          <option value="tier1">Tier 1</option>
+          <option value="tier2">Tier 2</option>
+          <option value="tier3">Tier 3</option>
+          <option value="tier4">Tier 4</option>
+        </select>
+        <input type="text" name="attr_knack_name" placeholder="Knack name" />
+        <textarea name="attr_knack_effect" placeholder="Effect or description"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-weapons">
+    <h2>Weapons</h2>
+    <fieldset class="repeating_weapons">
+      <div class="sheet-repeating-row sheet-weapons-row">
+        <input type="text" name="attr_weapon_name" placeholder="Weapon name" />
+        <input type="text" name="attr_weapon_damage" placeholder="Damage" />
+        <input type="text" name="attr_weapon_range" placeholder="Range" />
+        <input type="text" name="attr_weapon_issue_rating" placeholder="Issue rating" />
+        <textarea name="attr_weapon_special" placeholder="Special rules / ammo"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-social-actions">
+    <h2>Social Scene Actions</h2>
+    <fieldset class="repeating_socialactions">
+      <div class="sheet-repeating-row sheet-socialactions-row">
+        <input type="text" name="attr_social_action_actor" placeholder="Investigator" />
+        <input type="text" name="attr_social_action_target" placeholder="Target" />
+        <input type="text" name="attr_social_action_skill" placeholder="Skill used" />
+        <select name="attr_social_action_result">
+          <option value="pending">Pending</option>
+          <option value="success">Success</option>
+          <option value="reaction_negated">Negated by reaction</option>
+          <option value="fail">Fail</option>
+        </select>
+        <textarea name="attr_social_action_notes" placeholder="Notes or consequences"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="sheet-section sheet-vehicles">
+    <h2>Vehicle Log</h2>
+    <fieldset class="repeating_vehicles">
+      <div class="sheet-repeating-row sheet-vehicles-row">
+        <input type="text" name="attr_vehicle_name" placeholder="Vehicle" />
+        <select name="attr_vehicle_condition">
+          <option value="operational">Operational</option>
+          <option value="lightly_damaged">Lightly Damaged</option>
+          <option value="heavily_damaged">Heavily Damaged</option>
+          <option value="destroyed">Destroyed</option>
+        </select>
+        <input type="text" name="attr_vehicle_last_check" placeholder="Last check / repair" />
+        <textarea name="attr_vehicle_notes" placeholder="Notes, repairs, chase stakes"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
   <section class="sheet-section sheet-trauma">
     <h2>Horror &amp; Trauma</h2>
     <div class="sheet-field-grid">
